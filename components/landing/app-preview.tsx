@@ -154,7 +154,7 @@ function DashboardScreen() {
           className="rounded-lg"
         />
         <div>
-          <p className="text-xs font-bold text-foreground">VAAS</p>
+          <p className="text-xs font-bold text-foreground">{BRAND.name}</p>
           <p className="text-[10px] text-foreground/45">Dashboard</p>
         </div>
       </div>
