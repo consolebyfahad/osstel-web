@@ -51,7 +51,7 @@ function SolutionIllustration() {
           </div>
           <div className="flex h-10 w-10 items-center justify-center rounded-xl overflow-hidden">
             <Image
-              src="/applogo.png"
+              src={BRAND.logo}
               alt={BRAND.name}
               width={40}
               height={40}

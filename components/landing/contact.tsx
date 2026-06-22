@@ -1,18 +1,47 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MessageCircle, Send } from "lucide-react";
+import { AlertCircle, MessageCircle, Send } from "lucide-react";
 import { useState, type FormEvent } from "react";
 import { AnimatedSection } from "@/components/ui/animated-section";
 import { Button } from "@/components/ui/button";
 import { BRAND } from "@/lib/brand";
+import {
+  ContactApiError,
+  submitContactInquiry,
+} from "@/lib/api/contact";
 
 export function Contact() {
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
+    setError(null);
+    setIsSubmitting(true);
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      await submitContactInquiry({
+        name: String(formData.get("name") ?? "").trim(),
+        phone: String(formData.get("phone") ?? "").trim(),
+        email: String(formData.get("email") ?? "").trim(),
+        message: String(formData.get("message") ?? "").trim(),
+      });
+      setSubmitted(true);
+      form.reset();
+    } catch (err) {
+      if (err instanceof ContactApiError) {
+        setError(err.errors?.[0] ?? err.message);
+      } else {
+        setError("Something went wrong. Please try again.");
+      }
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -105,8 +134,9 @@ export function Contact() {
                         name="name"
                         type="text"
                         required
+                        disabled={isSubmitting}
                         placeholder="Your full name"
-                        className="w-full rounded-xl border border-foreground/10 bg-white/60 px-4 py-3 text-sm text-foreground placeholder:text-foreground/30 outline-none transition-colors focus:border-primary-start/40 focus:ring-2 focus:ring-primary-start/10"
+                        className="w-full rounded-xl border border-foreground/10 bg-white/60 px-4 py-3 text-sm text-foreground placeholder:text-foreground/30 outline-none transition-colors focus:border-primary-start/40 focus:ring-2 focus:ring-primary-start/10 disabled:opacity-60"
                       />
                     </div>
                     <div className="grid gap-4 sm:grid-cols-2">
@@ -122,8 +152,9 @@ export function Contact() {
                           name="phone"
                           type="tel"
                           required
+                          disabled={isSubmitting}
                           placeholder="+92 319 1828420"
-                          className="w-full rounded-xl border border-foreground/10 bg-white/60 px-4 py-3 text-sm text-foreground placeholder:text-foreground/30 outline-none transition-colors focus:border-primary-start/40 focus:ring-2 focus:ring-primary-start/10"
+                          className="w-full rounded-xl border border-foreground/10 bg-white/60 px-4 py-3 text-sm text-foreground placeholder:text-foreground/30 outline-none transition-colors focus:border-primary-start/40 focus:ring-2 focus:ring-primary-start/10 disabled:opacity-60"
                         />
                       </div>
                       <div>
@@ -138,8 +169,9 @@ export function Contact() {
                           name="email"
                           type="email"
                           required
+                          disabled={isSubmitting}
                           placeholder="you@example.com"
-                          className="w-full rounded-xl border border-foreground/10 bg-white/60 px-4 py-3 text-sm text-foreground placeholder:text-foreground/30 outline-none transition-colors focus:border-primary-start/40 focus:ring-2 focus:ring-primary-start/10"
+                          className="w-full rounded-xl border border-foreground/10 bg-white/60 px-4 py-3 text-sm text-foreground placeholder:text-foreground/30 outline-none transition-colors focus:border-primary-start/40 focus:ring-2 focus:ring-primary-start/10 disabled:opacity-60"
                         />
                       </div>
                     </div>
@@ -155,15 +187,28 @@ export function Contact() {
                         name="message"
                         required
                         rows={4}
+                        disabled={isSubmitting}
                         placeholder="Tell us about your hostel..."
-                        className="w-full resize-none rounded-xl border border-foreground/10 bg-white/60 px-4 py-3 text-sm text-foreground placeholder:text-foreground/30 outline-none transition-colors focus:border-primary-start/40 focus:ring-2 focus:ring-primary-start/10"
+                        className="w-full resize-none rounded-xl border border-foreground/10 bg-white/60 px-4 py-3 text-sm text-foreground placeholder:text-foreground/30 outline-none transition-colors focus:border-primary-start/40 focus:ring-2 focus:ring-primary-start/10 disabled:opacity-60"
                       />
                     </div>
                   </div>
+
+                  {error && (
+                    <div className="mt-4 flex items-start gap-2 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+                      <AlertCircle size={16} className="mt-0.5 shrink-0" />
+                      <span>{error}</span>
+                    </div>
+                  )}
+
                   <div className="mt-6">
-                    <Button type="submit" className="w-full">
+                    <Button
+                      type="submit"
+                      className="w-full"
+                      disabled={isSubmitting}
+                    >
                       <Send size={18} />
-                      Send Message
+                      {isSubmitting ? "Sending..." : "Send Message"}
                     </Button>
                   </div>
                 </>

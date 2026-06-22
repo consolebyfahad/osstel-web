@@ -147,7 +147,7 @@ function DashboardScreen() {
     <div className="flex min-h-[400px] flex-col bg-gradient-to-b from-[#4FC3F7]/8 to-background px-4 pb-4 pt-10">
       <div className="flex items-center gap-2.5">
         <Image
-          src="/applogo.png"
+          src={BRAND.logo}
           alt=""
           width={30}
           height={30}
@@ -280,7 +280,7 @@ export function AppPreview() {
                 <div className="flex flex-col justify-center">
                   <div className="mb-5 inline-flex w-fit items-center gap-2 rounded-full bg-[#4FC3F7]/10 px-4 py-2">
                     <Image
-                      src="/applogo.png"
+                      src={BRAND.logo}
                       alt=""
                       width={20}
                       height={20}

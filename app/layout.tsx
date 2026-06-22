@@ -23,12 +23,17 @@ export const metadata: Metadata = {
     "JazzCash",
     "Easypaisa",
   ],
+  icons: {
+    icon: BRAND.logo,
+    apple: BRAND.logo,
+  },
   openGraph: {
     title: `${BRAND.name} — ${BRAND.tagline}`,
     description:
       "Manage hostels, collect rent, and handle complaints digitally. The modern platform for hostel owners in Pakistan.",
     type: "website",
     locale: "en_PK",
+    images: [{ url: BRAND.logo, alt: `${BRAND.name} logo` }],
   },
   twitter: {
     card: "summary_large_image",

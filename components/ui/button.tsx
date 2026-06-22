@@ -10,6 +10,7 @@ interface ButtonProps {
   onClick?: () => void;
   className?: string;
   type?: "button" | "submit";
+  disabled?: boolean;
 }
 
 const variants = {
@@ -28,17 +29,20 @@ export function Button({
   onClick,
   className = "",
   type = "button",
+  disabled = false,
 }: ButtonProps) {
   const baseClass =
     "inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-3.5 text-sm font-semibold transition-all duration-300";
 
-  const combined = `${baseClass} ${variants[variant]} ${className}`;
+  const combined = `${baseClass} ${variants[variant]} ${disabled ? "pointer-events-none opacity-60" : ""} ${className}`;
 
-  const motionProps = {
-    whileHover: { scale: 1.03, y: -2 },
-    whileTap: { scale: 0.97 },
-    transition: { type: "spring" as const, stiffness: 400, damping: 17 },
-  };
+  const motionProps = disabled
+    ? {}
+    : {
+        whileHover: { scale: 1.03, y: -2 },
+        whileTap: { scale: 0.97 },
+        transition: { type: "spring" as const, stiffness: 400, damping: 17 },
+      };
 
   if (href) {
     return (
@@ -53,6 +57,7 @@ export function Button({
       type={type}
       onClick={onClick}
       className={combined}
+      disabled={disabled}
       {...motionProps}
     >
       {children}

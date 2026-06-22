@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { BRAND } from "@/lib/brand";
 
 interface LogoProps {
   variant?: "full" | "icon";
@@ -19,8 +20,8 @@ export function Logo({ variant = "full", size = "md", className = "" }: LogoProp
   return (
     <Link href="#" className={`flex items-center gap-2.5 ${className}`}>
       <Image
-        src="/applogo.png"
-        alt="VAAS logo"
+        src={BRAND.logo}
+        alt={`${BRAND.name} logo`}
         width={icon}
         height={icon}
         className="rounded-xl"
@@ -28,7 +29,7 @@ export function Logo({ variant = "full", size = "md", className = "" }: LogoProp
       />
       {variant === "full" && (
         <span className={`${text} font-bold tracking-tight text-foreground`}>
-          VAAS
+          {BRAND.name}
         </span>
       )}
     </Link>

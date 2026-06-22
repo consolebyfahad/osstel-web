@@ -95,7 +95,7 @@ function PhoneMockup() {
           <div className="bg-gradient-to-b from-primary-start/8 to-background px-4 pb-6 pt-2">
             <div className="flex items-center gap-2">
               <Image
-                src="/applogo.png"
+                src={BRAND.logo}
                 alt=""
                 width={28}
                 height={28}
@@ -196,7 +196,7 @@ export function Hero() {
               className="mb-6 inline-flex items-center gap-2 rounded-full glass px-4 py-2 text-sm font-medium text-foreground/70"
             >
               <Image
-                src="/applogo.png"
+                src={BRAND.logo}
                 alt=""
                 width={20}
                 height={20}

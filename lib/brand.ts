@@ -1,6 +1,7 @@
 export const BRAND = {
   name: "VAAS",
   tagline: "Rent Made Simple",
+  logo: "/applogo.png",
   email: "vaas@gmail.com",
   phone: "923191828420",
   phoneDisplay: "+92 319 1828420",
