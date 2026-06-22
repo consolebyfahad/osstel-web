@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { ThemeProvider } from "@/components/providers/theme-provider";
+import { JsonLd } from "@/components/seo/json-ld";
 import "./globals.css";
-import { BRAND } from "@/lib/brand";
+import { buildRootMetadata } from "@/lib/seo";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -9,43 +11,7 @@ const inter = Inter({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: `${BRAND.name} — ${BRAND.tagline} | Hostel Management Platform`,
-  description:
-    "A complete digital platform for hostel owners in Pakistan to manage tenants, rooms, payments, and complaints in one place. Manage hostels. Collect rent. Effortlessly.",
-  keywords: [
-    "hostel management",
-    "rent collection",
-    "tenant management",
-    "hostel software Pakistan",
-    "rent tracking",
-    BRAND.name,
-    "JazzCash",
-    "Easypaisa",
-  ],
-  icons: {
-    icon: BRAND.logo,
-    apple: BRAND.logo,
-  },
-  openGraph: {
-    title: `${BRAND.name} — ${BRAND.tagline}`,
-    description:
-      "Manage hostels, collect rent, and handle complaints digitally. The modern platform for hostel owners in Pakistan.",
-    type: "website",
-    locale: "en_PK",
-    images: [{ url: BRAND.logo, alt: `${BRAND.name} logo` }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: `${BRAND.name} — ${BRAND.tagline}`,
-    description:
-      "A complete digital platform for hostel owners in Pakistan to manage tenants, rooms, payments, and complaints.",
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
-};
+export const metadata: Metadata = buildRootMetadata();
 
 export default function RootLayout({
   children,
@@ -53,8 +19,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} h-full scroll-smooth`}>
-      <body className="min-h-full flex flex-col antialiased">{children}</body>
+    <html
+      lang="en-PK"
+      className={`${inter.variable} h-full scroll-smooth`}
+      suppressHydrationWarning
+    >
+      <body className="min-h-full flex flex-col antialiased bg-background text-foreground">
+        <JsonLd />
+        <ThemeProvider>{children}</ThemeProvider>
+      </body>
     </html>
   );
 }

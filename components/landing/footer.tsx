@@ -26,14 +26,15 @@ const socials = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-foreground/5 bg-white/40 pt-16 pb-8">
+    <footer className="border-t border-border bg-background/40 pt-16 pb-8">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div className="sm:col-span-2 lg:col-span-1">
             <Logo size="md" />
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-foreground/60">
-              {BRAND.tagline}. The modern platform for hostel owners in{" "}
-              {BRAND.country} to manage tenants, rooms, and payments digitally.
+              {BRAND.name} is a hostel and hotel management system for{" "}
+              {BRAND.country}. {BRAND.tagline} — manage tenants, rooms, rent,
+              and payments in one app.
             </p>
             <div className="mt-6 flex gap-3">
               {socials.map((social) => (

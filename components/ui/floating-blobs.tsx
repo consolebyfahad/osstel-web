@@ -52,7 +52,7 @@ export function FloatingBlobs({
       {[...Array(6)].map((_, i) => (
         <motion.div
           key={i}
-          className="absolute rounded-full border border-white/50 bg-white/30 backdrop-blur-sm"
+          className="absolute rounded-full border border-border bg-surface-muted/80 backdrop-blur-sm"
           style={{
             width: 8 + i * 4,
             height: 8 + i * 4,

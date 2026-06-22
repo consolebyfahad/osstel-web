@@ -82,7 +82,7 @@ function PhoneMockup() {
       >
         <div className="phone-screen">
           {/* Status bar */}
-          <div className="flex items-center justify-between bg-white px-5 py-3">
+          <div className="flex items-center justify-between surface px-5 py-3">
             <span className="text-xs font-semibold text-foreground">9:41</span>
             <div className="mx-auto h-6 w-24 rounded-full bg-foreground/10" />
             <div className="flex gap-1">
@@ -150,7 +150,7 @@ function PhoneMockup() {
               ].map((payment) => (
                 <div
                   key={payment}
-                  className="flex items-center justify-between rounded-xl bg-white p-2.5 shadow-sm"
+                  className="flex items-center justify-between rounded-xl surface p-2.5 shadow-sm"
                 >
                   <span className="text-xs font-medium text-foreground">
                     {payment}
@@ -211,8 +211,8 @@ export function Hero() {
               transition={{ delay: 0.3, duration: 0.7 }}
               className="text-4xl font-bold leading-tight tracking-tight text-foreground sm:text-5xl lg:text-6xl"
             >
-              Manage Hostels.{" "}
-              <span className="gradient-text">Collect Rent.</span> Effortlessly.
+              {BRAND.name}: Hostel &{" "}
+              <span className="gradient-text">Hotel Management System</span>
             </motion.h1>
 
             <motion.p
@@ -221,8 +221,9 @@ export function Hero() {
               transition={{ delay: 0.45 }}
               className="mt-6 max-w-xl text-base leading-relaxed text-foreground/60 sm:text-lg lg:mx-0 mx-auto"
             >
-              A complete digital platform for hostel owners in Pakistan to
-              manage tenants, rooms, payments, and complaints in one place.
+              The complete hostel and hotel management software for owners in{" "}
+              {BRAND.country}. Manage tenants, rooms, rent collection, payments,
+              and complaints — all in one OSSTEL platform.
             </motion.p>
 
             <motion.div

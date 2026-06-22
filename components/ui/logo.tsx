@@ -18,10 +18,10 @@ export function Logo({ variant = "full", size = "md", className = "" }: LogoProp
   const { icon, text } = sizes[size];
 
   return (
-    <Link href="#" className={`flex items-center gap-2.5 ${className}`}>
+    <Link href="/" className={`flex items-center gap-2.5 ${className}`}>
       <Image
         src={BRAND.logo}
-        alt={`${BRAND.name} logo`}
+        alt={`${BRAND.name} — hostel and hotel management system`}
         width={icon}
         height={icon}
         className="rounded-xl"

@@ -72,7 +72,7 @@ export function TrustProblem() {
                 <motion.div
                   whileHover={{ rotate: [0, -10, 10, 0] }}
                   transition={{ duration: 0.5 }}
-                  className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-white/80 shadow-sm"
+                  className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl surface shadow-sm"
                 >
                   <point.icon size={24} className={point.iconColor} />
                 </motion.div>

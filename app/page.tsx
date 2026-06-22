@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Navbar } from "@/components/landing/navbar";
 import { Hero } from "@/components/landing/hero";
 import { TrustProblem } from "@/components/landing/trust-problem";
@@ -8,6 +9,15 @@ import { Pricing } from "@/components/landing/pricing";
 import { Contact } from "@/components/landing/contact";
 import { Footer } from "@/components/landing/footer";
 import { MobileStickyCTA } from "@/components/landing/mobile-sticky-cta";
+import { SEO_DESCRIPTION, SEO_TITLE } from "@/lib/seo";
+
+export const metadata: Metadata = {
+  title: SEO_TITLE,
+  description: SEO_DESCRIPTION,
+  alternates: {
+    canonical: "/",
+  },
+};
 
 export default function Home() {
   return (

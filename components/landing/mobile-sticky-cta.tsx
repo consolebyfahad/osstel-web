@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 
 export function MobileStickyCTA() {
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-40 border-t border-white/50 glass p-3 shadow-2xl shadow-primary-start/10 md:hidden">
+    <div className="fixed bottom-0 left-0 right-0 z-40 border-t border-border glass p-3 shadow-2xl shadow-primary-start/10 md:hidden">
       <div className="flex gap-3">
         <Button
           href="#contact"

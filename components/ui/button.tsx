@@ -15,7 +15,7 @@ interface ButtonProps {
 
 const variants = {
   primary: "btn-gradient text-white",
-  secondary: "glass text-foreground hover:bg-white/90",
+  secondary: "glass text-foreground hover:bg-surface-muted",
   outline:
     "border border-primary-start/25 text-foreground hover:border-primary-start/50 hover:bg-primary-start/5",
   whatsapp:

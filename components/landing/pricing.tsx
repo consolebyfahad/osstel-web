@@ -88,7 +88,7 @@ export function Pricing() {
               >
                 {plan.popular && (
                   <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-white px-4 py-1.5 text-xs font-bold text-primary-start shadow-lg">
+                    <span className="inline-flex items-center gap-1.5 rounded-full surface px-4 py-1.5 text-xs font-bold text-primary-start shadow-lg">
                       <Sparkles size={12} />
                       Most Popular
                     </span>
@@ -154,7 +154,7 @@ export function Pricing() {
                     variant={plan.popular ? "secondary" : "primary"}
                     className={`w-full ${
                       plan.popular
-                        ? "!bg-white !text-primary-start hover:!bg-white/90"
+                        ? "!bg-surface !text-primary-start hover:!bg-surface-muted"
                         : ""
                     }`}
                   >

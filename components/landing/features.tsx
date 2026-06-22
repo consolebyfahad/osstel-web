@@ -65,11 +65,12 @@ export function Features() {
             Features
           </span>
           <h2 className="mt-3 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            Everything You Need to Run Your Hostel
+            Hostel & Hotel Management Software Features
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base text-foreground/60">
-            Powerful features designed specifically for hostel owners and
-            property managers.
+            OSSTEL includes everything you need in a modern hostel management
+            system and hotel management system — built for owners and property
+            managers in Pakistan.
           </p>
         </AnimatedSection>
 
@@ -107,7 +108,7 @@ function FeatureCard({ feature }: { feature: (typeof features)[number] }) {
       <motion.div
         whileHover={{ scale: 1.1, rotate: 5 }}
         transition={{ type: "spring", stiffness: 400 }}
-        className="relative mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-white/80 shadow-sm"
+        className="relative mb-5 flex h-14 w-14 items-center justify-center rounded-2xl surface shadow-sm"
       >
         <feature.icon size={26} className="text-primary-start" />
       </motion.div>

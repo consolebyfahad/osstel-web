@@ -136,7 +136,7 @@ export function Contact() {
                         required
                         disabled={isSubmitting}
                         placeholder="Your full name"
-                        className="w-full rounded-xl border border-foreground/10 bg-white/60 px-4 py-3 text-sm text-foreground placeholder:text-foreground/30 outline-none transition-colors focus:border-primary-start/40 focus:ring-2 focus:ring-primary-start/10 disabled:opacity-60"
+                        className="input-field w-full rounded-xl px-4 py-3 text-sm disabled:opacity-60"
                       />
                     </div>
                     <div className="grid gap-4 sm:grid-cols-2">
@@ -154,7 +154,7 @@ export function Contact() {
                           required
                           disabled={isSubmitting}
                           placeholder="+92 319 1828420"
-                          className="w-full rounded-xl border border-foreground/10 bg-white/60 px-4 py-3 text-sm text-foreground placeholder:text-foreground/30 outline-none transition-colors focus:border-primary-start/40 focus:ring-2 focus:ring-primary-start/10 disabled:opacity-60"
+                          className="input-field w-full rounded-xl px-4 py-3 text-sm disabled:opacity-60"
                         />
                       </div>
                       <div>
@@ -171,7 +171,7 @@ export function Contact() {
                           required
                           disabled={isSubmitting}
                           placeholder="you@example.com"
-                          className="w-full rounded-xl border border-foreground/10 bg-white/60 px-4 py-3 text-sm text-foreground placeholder:text-foreground/30 outline-none transition-colors focus:border-primary-start/40 focus:ring-2 focus:ring-primary-start/10 disabled:opacity-60"
+                          className="input-field w-full rounded-xl px-4 py-3 text-sm disabled:opacity-60"
                         />
                       </div>
                     </div>
@@ -189,7 +189,7 @@ export function Contact() {
                         rows={4}
                         disabled={isSubmitting}
                         placeholder="Tell us about your hostel..."
-                        className="w-full resize-none rounded-xl border border-foreground/10 bg-white/60 px-4 py-3 text-sm text-foreground placeholder:text-foreground/30 outline-none transition-colors focus:border-primary-start/40 focus:ring-2 focus:ring-primary-start/10 disabled:opacity-60"
+                        className="input-field w-full resize-none rounded-xl px-4 py-3 text-sm disabled:opacity-60"
                       />
                     </div>
                   </div>

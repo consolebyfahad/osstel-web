@@ -20,7 +20,7 @@ const floatingCards = [
     delay: 0.2,
     float: 8,
     content: (
-      <div className="flex items-center gap-3 rounded-2xl bg-white px-4 py-3 shadow-xl shadow-foreground/10">
+      <div className="flex items-center gap-3 rounded-2xl surface px-4 py-3 shadow-xl shadow-foreground/10">
         <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-100">
           <ArrowDownRight size={18} className="text-emerald-600" />
         </div>
@@ -40,7 +40,7 @@ const floatingCards = [
     delay: 0.35,
     float: 10,
     content: (
-      <div className="flex items-center gap-3 rounded-2xl bg-white px-4 py-3 shadow-xl shadow-foreground/10">
+      <div className="flex items-center gap-3 rounded-2xl surface px-4 py-3 shadow-xl shadow-foreground/10">
         <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-100">
           <ArrowUpRight size={18} className="text-amber-600" />
         </div>
@@ -60,7 +60,7 @@ const floatingCards = [
     delay: 0.5,
     float: 7,
     content: (
-      <div className="flex flex-col items-center gap-1 rounded-2xl bg-white px-5 py-4 shadow-xl shadow-foreground/10">
+      <div className="flex flex-col items-center gap-1 rounded-2xl surface px-5 py-4 shadow-xl shadow-foreground/10">
         <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#4FC3F7] to-[#6E61FF]">
           <Users size={20} className="text-white" />
         </div>
@@ -77,7 +77,7 @@ const floatingCards = [
     delay: 0.65,
     float: 6,
     content: (
-      <div className="rounded-2xl bg-white px-5 py-4 shadow-2xl shadow-foreground/10">
+      <div className="rounded-2xl surface px-5 py-4 shadow-2xl shadow-foreground/10">
         <p className="text-xs font-bold text-foreground">Room Occupancy</p>
         <div className="mt-3 flex items-center gap-4">
           <div className="relative h-16 w-16 shrink-0">
@@ -180,7 +180,7 @@ function DashboardScreen() {
 
       <div className="mt-4 grid grid-cols-2 gap-2.5">
         {[
-          { l: "Rooms", v: "28", c: "bg-white shadow-sm" },
+          { l: "Rooms", v: "28", c: "surface shadow-sm" },
           { l: "Paid", v: "22", c: "bg-emerald-50" },
           { l: "Pending", v: "6", c: "bg-orange-50" },
           { l: "Issues", v: "1", c: "bg-red-50" },
@@ -225,7 +225,7 @@ function StoreButton({
   return (
     <a
       href={href}
-      className="inline-flex items-center gap-3 rounded-xl border border-foreground/10 bg-white px-4 py-2.5 shadow-sm transition-all hover:border-foreground/20 hover:shadow-md"
+      className="inline-flex items-center gap-3 rounded-xl border border-border surface px-4 py-2.5 shadow-sm transition-all hover:border-foreground/20 hover:shadow-md"
     >
       {store === "google" ? (
         <svg viewBox="0 0 24 24" className="h-7 w-7" aria-hidden>
@@ -363,7 +363,7 @@ export function AppPreview() {
 
                   {/* Mobile floating cards — simplified row */}
                   <div className="absolute -bottom-2 left-0 right-0 z-20 flex justify-center gap-3 sm:hidden">
-                    <div className="rounded-xl bg-white px-3 py-2 shadow-lg">
+                    <div className="rounded-xl surface px-3 py-2 shadow-lg">
                       <p className="text-[10px] font-semibold text-emerald-600">
                         +Rs. 12,000
                       </p>
@@ -371,7 +371,7 @@ export function AppPreview() {
                         Rent received
                       </p>
                     </div>
-                    <div className="rounded-xl bg-white px-3 py-2 shadow-lg">
+                    <div className="rounded-xl surface px-3 py-2 shadow-lg">
                       <div className="flex items-center gap-1">
                         <BedDouble size={12} className="text-[#4FC3F7]" />
                         <p className="text-[10px] font-bold text-foreground">
@@ -397,7 +397,7 @@ export function AppPreview() {
             ].map((item) => (
               <div
                 key={item.label}
-                className="flex items-center gap-2 rounded-full border border-foreground/8 bg-white/80 px-4 py-2 shadow-sm"
+                className="flex items-center gap-2 rounded-full border border-border surface-muted px-4 py-2 shadow-sm"
               >
                 <item.icon size={14} className="text-[#4FC3F7]" />
                 <span className="text-xs font-medium text-foreground/70">

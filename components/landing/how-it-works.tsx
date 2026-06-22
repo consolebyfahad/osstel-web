@@ -100,7 +100,7 @@ export function HowItWorks() {
                   >
                     <motion.div
                       whileHover={{ scale: 1.02, y: -4 }}
-                      className={`w-[calc(50%-2.5rem)] rounded-3xl border border-white/60 bg-white/80 p-6 shadow-xl backdrop-blur-sm ${item.glow}`}
+                      className={`w-[calc(50%-2.5rem)] rounded-3xl surface p-6 shadow-xl backdrop-blur-sm ${item.glow}`}
                     >
                       <div className="flex items-start gap-4">
                         <div
@@ -184,7 +184,7 @@ function StepCard({ item }: { item: (typeof steps)[number] }) {
   return (
     <motion.div
       whileHover={{ y: -6 }}
-      className={`h-full rounded-3xl border border-white/60 bg-white/85 p-5 shadow-lg backdrop-blur-sm sm:p-6 ${item.glow}`}
+      className={`h-full rounded-3xl surface p-5 shadow-lg backdrop-blur-sm sm:p-6 ${item.glow}`}
     >
       <div
         className={`mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br ${item.color} shadow-md`}

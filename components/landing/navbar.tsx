@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import { LiquidGlassToggle } from "@/components/ui/liquid-glass-toggle";
 import { Logo } from "@/components/ui/logo";
 
 const navLinks = [
@@ -50,27 +51,31 @@ export function Navbar() {
         </div>
 
         <div className="hidden items-center gap-3 md:flex">
+          <LiquidGlassToggle />
           <Button variant="outline" href="#contact">
             Request Demo
           </Button>
           <Button href="#contact">Download App</Button>
         </div>
 
-        <button
-          type="button"
-          className="rounded-xl p-2 text-foreground md:hidden"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="Toggle menu"
-        >
-          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        <div className="flex items-center gap-2 md:hidden">
+          <LiquidGlassToggle />
+          <button
+            type="button"
+            className="rounded-xl p-2 text-foreground"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Toggle menu"
+          >
+            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </nav>
 
       {mobileOpen && (
         <motion.div
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: "auto" }}
-          className="glass border-t border-white/50 md:hidden"
+          className="glass border-t border-border md:hidden"
         >
           <div className="flex flex-col gap-4 px-4 py-6">
             {navLinks.map((link) => (

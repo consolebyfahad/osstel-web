@@ -73,7 +73,7 @@ function SolutionIllustration() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ delay: i * 0.15 }}
               viewport={{ once: true }}
-              className="rounded-2xl bg-white/60 p-4"
+              className="rounded-2xl surface-muted p-4"
             >
               <div className="flex items-center justify-between">
                 <span className="text-sm font-medium text-foreground/70">
@@ -126,8 +126,8 @@ export function Solution() {
             </h2>
             <p className="mt-4 text-base leading-relaxed text-foreground/60">
               {BRAND.name} replaces spreadsheets, WhatsApp threads, and manual
-              tracking with a single, powerful app built for hostel owners in
-              Pakistan.
+              tracking with one hostel and hotel management system built for
+              property owners in {BRAND.country}.
             </p>
 
             <div className="mt-8 space-y-5">
