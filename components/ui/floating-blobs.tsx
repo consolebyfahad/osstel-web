@@ -19,32 +19,20 @@ export function FloatingBlobs({
       aria-hidden
     >
       <motion.div
-        className="animate-blob absolute -left-32 -top-32 h-[500px] w-[500px] rounded-full"
-        style={{
-          background:
-            "radial-gradient(circle, rgba(91,95,232,0.28) 0%, transparent 70%)",
-          opacity,
-        }}
+        className="animate-blob absolute -left-32 -top-32 h-[500px] w-[500px] rounded-full bg-accent-soft/30 blur-3xl"
+        style={{ opacity }}
         animate={{ x: [0, 40, 0], y: [0, -30, 0] }}
         transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
-        className="animate-blob animate-blob-delay-1 absolute -right-24 top-1/4 h-[400px] w-[400px] rounded-full"
-        style={{
-          background:
-            "radial-gradient(circle, rgba(155,124,248,0.22) 0%, transparent 70%)",
-          opacity,
-        }}
+        className="animate-blob animate-blob-delay-1 absolute -right-24 top-1/4 h-[400px] w-[400px] rounded-full bg-primary-end/25 blur-3xl"
+        style={{ opacity }}
         animate={{ x: [0, -30, 0], y: [0, 40, 0] }}
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
-        className="animate-blob animate-blob-delay-2 absolute bottom-0 left-1/3 h-[350px] w-[350px] rounded-full"
-        style={{
-          background:
-            "radial-gradient(circle, rgba(61,217,195,0.18) 0%, transparent 70%)",
-          opacity,
-        }}
+        className="animate-blob animate-blob-delay-2 absolute bottom-0 left-1/3 h-[350px] w-[350px] rounded-full bg-primary-start/20 blur-3xl"
+        style={{ opacity }}
         animate={{ x: [0, 20, 0], y: [0, -20, 0] }}
         transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
       />

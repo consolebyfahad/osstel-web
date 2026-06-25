@@ -106,8 +106,8 @@ export function Contact() {
                   animate={{ opacity: 1, scale: 1 }}
                   className="flex flex-col items-center justify-center py-12 text-center"
                 >
-                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-accent/20">
-                    <Send size={28} className="text-accent" />
+                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl chip-accent">
+                    <Send size={28} className="text-accent-foreground dark:text-accent" />
                   </div>
                   <h3 className="mt-4 text-xl font-bold text-foreground">
                     Message Sent!

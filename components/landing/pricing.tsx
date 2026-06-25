@@ -55,6 +55,7 @@ const plans = [
       "Multi-hostel management",
       "Advanced reports",
       "Priority support",
+      "Future premium features",
     ],
     cta: "Contact Sales",
     popular: false,

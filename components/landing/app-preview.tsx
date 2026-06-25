@@ -21,8 +21,8 @@ const floatingCards = [
     float: 8,
     content: (
       <div className="flex items-center gap-3 rounded-2xl surface px-4 py-3 shadow-xl shadow-foreground/10">
-        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-100">
-          <ArrowDownRight size={18} className="text-emerald-600" />
+        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-success/15">
+          <ArrowDownRight size={18} className="text-success" />
         </div>
         <div>
           <p className="text-xs font-semibold text-foreground">Rent Received</p>
@@ -30,7 +30,7 @@ const floatingCards = [
             Ahmed Khan · JazzCash
           </p>
         </div>
-        <p className="text-sm font-bold text-emerald-600">+12,000</p>
+        <p className="text-sm font-bold text-success">+12,000</p>
       </div>
     ),
   },
@@ -41,8 +41,8 @@ const floatingCards = [
     float: 10,
     content: (
       <div className="flex items-center gap-3 rounded-2xl surface px-4 py-3 shadow-xl shadow-foreground/10">
-        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-100">
-          <ArrowUpRight size={18} className="text-amber-600" />
+        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent/20">
+          <ArrowUpRight size={18} className="text-accent-foreground dark:text-accent" />
         </div>
         <div>
           <p className="text-xs font-semibold text-foreground">Pending Rent</p>
@@ -50,7 +50,7 @@ const floatingCards = [
             Fatima Ali · Room B-204
           </p>
         </div>
-        <p className="text-sm font-bold text-amber-600">10,500</p>
+        <p className="text-sm font-bold text-primary-start">10,500</p>
       </div>
     ),
   },
@@ -61,7 +61,7 @@ const floatingCards = [
     float: 7,
     content: (
       <div className="flex flex-col items-center gap-1 rounded-2xl surface px-5 py-4 shadow-xl shadow-foreground/10">
-        <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#4FC3F7] to-[#6E61FF]">
+        <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-primary-start to-primary-end">
           <Users size={20} className="text-white" />
         </div>
         <p className="text-lg font-bold text-foreground">42</p>
@@ -87,7 +87,7 @@ const floatingCards = [
                 cy="18"
                 r="15.9"
                 fill="none"
-                stroke="#f0f0f5"
+                className="stroke-border"
                 strokeWidth="3"
               />
               <circle
@@ -95,7 +95,7 @@ const floatingCards = [
                 cy="18"
                 r="15.9"
                 fill="none"
-                stroke="#4FC3F7"
+                className="stroke-primary-start"
                 strokeWidth="3"
                 strokeDasharray="78 100"
                 strokeLinecap="round"
@@ -105,7 +105,7 @@ const floatingCards = [
                 cy="18"
                 r="15.9"
                 fill="none"
-                stroke="#6E61FF"
+                className="stroke-primary-end"
                 strokeWidth="3"
                 strokeDasharray="15 100"
                 strokeDashoffset="-78"
@@ -118,8 +118,8 @@ const floatingCards = [
           </div>
           <div className="space-y-1.5">
             {[
-              { label: "Occupied", color: "bg-[#4FC3F7]", pct: "78%" },
-              { label: "Vacant", color: "bg-[#6E61FF]", pct: "15%" },
+              { label: "Occupied", color: "bg-primary-start", pct: "78%" },
+              { label: "Vacant", color: "bg-primary-end", pct: "15%" },
               { label: "Reserved", color: "bg-accent", pct: "7%" },
             ].map((item) => (
               <div key={item.label} className="flex items-center gap-2">
@@ -144,7 +144,7 @@ const floatingCards = [
 
 function DashboardScreen() {
   return (
-    <div className="flex min-h-[400px] flex-col bg-gradient-to-b from-[#4FC3F7]/8 to-background px-4 pb-4 pt-10">
+    <div className="flex min-h-[400px] flex-col bg-gradient-to-b from-primary-start/8 to-background px-4 pb-4 pt-10">
       <div className="flex items-center gap-2.5">
         <Image
           src={BRAND.logo}
@@ -165,7 +165,7 @@ function DashboardScreen() {
         Al-Noor Hostel, Lahore
       </p>
 
-      <div className="mt-4 rounded-2xl bg-gradient-to-br from-[#4FC3F7] to-[#0288D1] p-4 text-white shadow-lg">
+      <div className="mt-4 rounded-2xl btn-gradient p-4 shadow-lg">
         <p className="text-[10px] font-medium opacity-85">
           This Month&apos;s Collection
         </p>
@@ -181,9 +181,9 @@ function DashboardScreen() {
       <div className="mt-4 grid grid-cols-2 gap-2.5">
         {[
           { l: "Rooms", v: "28", c: "surface shadow-sm" },
-          { l: "Paid", v: "22", c: "bg-emerald-50" },
-          { l: "Pending", v: "6", c: "bg-orange-50" },
-          { l: "Issues", v: "1", c: "bg-red-50" },
+          { l: "Paid", v: "22", c: "bg-success/10" },
+          { l: "Pending", v: "6", c: "bg-accent/15" },
+          { l: "Issues", v: "1", c: "bg-primary-end/10" },
         ].map((s) => (
           <div key={s.l} className={`rounded-xl ${s.c} p-3`}>
             <p className="text-[10px] font-medium text-foreground/45">{s.l}</p>
@@ -278,7 +278,7 @@ export function AppPreview() {
               <div className="grid items-center gap-10 px-6 py-10 sm:px-10 sm:py-12 lg:grid-cols-2 lg:gap-6 lg:px-14 lg:py-16">
                 {/* Left — copy & CTAs */}
                 <div className="flex flex-col justify-center">
-                  <div className="mb-5 inline-flex w-fit items-center gap-2 rounded-full bg-[#4FC3F7]/10 px-4 py-2">
+                  <div className="mb-5 inline-flex w-fit items-center gap-2 rounded-full bg-primary-start/10 px-4 py-2">
                     <Image
                       src={BRAND.logo}
                       alt=""
@@ -286,7 +286,7 @@ export function AppPreview() {
                       height={20}
                       className="rounded-md"
                     />
-                    <span className="text-sm font-semibold text-[#0288D1]">
+                    <span className="text-sm font-semibold text-primary-start">
                       {BRAND.name} Mobile App
                     </span>
                   </div>
@@ -323,7 +323,7 @@ export function AppPreview() {
                 {/* Right — phone + floating cards */}
                 <div className="relative mx-auto flex min-h-[480px] w-full max-w-md items-center justify-center lg:mx-0 lg:max-w-none lg:min-h-[520px]">
                   {/* Glow */}
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#4FC3F7]/20 to-[#6E61FF]/10 blur-3xl" />
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary-start/20 to-primary-end/10 blur-3xl" />
 
                   {/* Floating cards */}
                   {floatingCards.map((card) => (
@@ -364,7 +364,7 @@ export function AppPreview() {
                   {/* Mobile floating cards — simplified row */}
                   <div className="absolute -bottom-2 left-0 right-0 z-20 flex justify-center gap-3 sm:hidden">
                     <div className="rounded-xl surface px-3 py-2 shadow-lg">
-                      <p className="text-[10px] font-semibold text-emerald-600">
+                      <p className="text-[10px] font-semibold text-success">
                         +Rs. 12,000
                       </p>
                       <p className="text-[9px] text-foreground/45">
@@ -373,7 +373,7 @@ export function AppPreview() {
                     </div>
                     <div className="rounded-xl surface px-3 py-2 shadow-lg">
                       <div className="flex items-center gap-1">
-                        <BedDouble size={12} className="text-[#4FC3F7]" />
+                        <BedDouble size={12} className="text-primary-start" />
                         <p className="text-[10px] font-bold text-foreground">
                           78%
                         </p>
@@ -399,7 +399,7 @@ export function AppPreview() {
                 key={item.label}
                 className="flex items-center gap-2 rounded-full border border-border surface-muted px-4 py-2 shadow-sm"
               >
-                <item.icon size={14} className="text-[#4FC3F7]" />
+                <item.icon size={14} className="text-primary-start" />
                 <span className="text-xs font-medium text-foreground/70">
                   {item.label}
                 </span>

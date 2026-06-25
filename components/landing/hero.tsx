@@ -64,12 +64,12 @@ function PhoneMockup() {
         }}
       >
         <div className="flex items-center gap-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-500/15">
-            <CalendarCheck size={16} className="text-emerald-500" />
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent/25">
+            <CalendarCheck size={16} className="text-accent-foreground dark:text-accent" />
           </div>
           <div>
             <p className="text-xs text-foreground/50">On-time Payments</p>
-            <p className="text-sm font-bold text-emerald-500">92%</p>
+            <p className="text-sm font-bold text-primary-start">92%</p>
           </div>
         </div>
       </motion.div>

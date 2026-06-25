@@ -29,7 +29,7 @@ const steps = [
     title: "Add Rooms",
     description:
       "Set up rooms, beds, and monthly rent. See occupancy at a glance.",
-    color: "from-primary-end to-violet-400",
+    color: "from-primary-end to-primary-mid",
     glow: "shadow-primary-end/20",
   },
   {
@@ -37,8 +37,8 @@ const steps = [
     icon: UserPlus,
     title: "Add Tenants",
     description: "Onboard tenants, assign rooms, and store their contact info.",
-    color: "from-accent to-teal-400",
-    glow: "shadow-accent/20",
+    color: "from-accent-soft to-primary-start",
+    glow: "shadow-accent-soft/20",
   },
   {
     step: "04",
@@ -46,7 +46,7 @@ const steps = [
     title: "Track Rent",
     description:
       "Automatic due dates, reminders, and a clear pending-paid view.",
-    color: "from-primary-start to-accent",
+    color: "from-primary-start to-primary-mid",
     glow: "shadow-primary-start/15",
   },
   {
@@ -55,8 +55,8 @@ const steps = [
     title: "Receive Payments",
     description:
       "Tenants pay via JazzCash or Easypaisa — you verify screenshots in one tap.",
-    color: "from-primary-end to-primary-start",
-    glow: "shadow-primary-end/15",
+    color: "from-primary-mid to-accent-soft",
+    glow: "shadow-primary-mid/15",
   },
 ];
 
@@ -160,7 +160,7 @@ export function HowItWorks() {
 
         {/* Bottom CTA strip */}
         <AnimatedSection delay={0.3} className="mt-14">
-          <div className="flex flex-col items-center justify-between gap-4 rounded-3xl border border-primary-start/10 bg-gradient-to-r from-primary-start/5 via-white/80 to-accent/5 px-6 py-8 text-center sm:flex-row sm:px-10 sm:text-left">
+          <div className="flex flex-col items-center justify-between gap-4 rounded-3xl border border-primary-start/10 bg-gradient-to-r from-primary-start/5 via-surface-muted to-accent-soft/10 px-6 py-8 text-center sm:flex-row sm:px-10 sm:text-left">
             <div>
               <p className="text-lg font-bold text-foreground">
                 Ready to get started?

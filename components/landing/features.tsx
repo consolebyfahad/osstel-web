@@ -24,28 +24,28 @@ const features = [
     title: "Room & Bed Tracking",
     description:
       "Visual room layout with occupancy status. Know which beds are vacant at a glance.",
-    gradient: "from-accent/20 to-teal-400/10",
+    gradient: "from-primary-end/20 to-primary-mid/10",
   },
   {
     icon: CreditCard,
     title: "Rent Collection System",
     description:
       "Set rent amounts, due dates, and auto-generate monthly collection reports.",
-    gradient: "from-accent-soft/25 to-primary-start/10",
+    gradient: "from-primary-start/20 to-accent-soft/15",
   },
   {
     icon: Camera,
     title: "Payment Screenshot Verification",
     description:
       "Tenants upload UPI/bank screenshots. Verify payments with a single tap.",
-    gradient: "from-accent/15 to-emerald-400/10",
+    gradient: "from-accent/20 to-primary-end/10",
   },
   {
     icon: MessageSquare,
     title: "Complaint Management",
     description:
       "Tenants submit complaints in-app. Track status from open to resolved.",
-    gradient: "from-primary-end/15 to-violet-400/10",
+    gradient: "from-primary-mid/15 to-primary-end/10",
   },
   {
     icon: BellRing,

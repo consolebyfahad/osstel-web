@@ -39,7 +39,7 @@ const painPoints = [
     title: "No Tenant Records",
     description:
       "No centralized system for tenant details, room assignments, complaints, or payment history.",
-    color: "from-purple-500/10 to-primary-start/10",
+    color: "from-primary-end/10 to-primary-mid/10",
     iconColor: "text-primary-start",
   },
 ];
