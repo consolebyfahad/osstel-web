@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { type ReactNode } from "react";
 
@@ -22,6 +23,14 @@ const variants = {
     "bg-[#25D366] text-white hover:bg-[#20BD5A] shadow-lg shadow-[#25D366]/25",
 };
 
+function isInternalHref(href: string) {
+  return href.startsWith("/") || href.startsWith("#");
+}
+
+function normalizeInternalHref(href: string) {
+  return href.startsWith("#") ? `/${href}` : href;
+}
+
 export function Button({
   children,
   variant = "primary",
@@ -43,6 +52,14 @@ export function Button({
         whileTap: { scale: 0.97 },
         transition: { type: "spring" as const, stiffness: 400, damping: 17 },
       };
+
+  if (href && isInternalHref(href)) {
+    return (
+      <Link href={normalizeInternalHref(href)} className={combined}>
+        {children}
+      </Link>
+    );
+  }
 
   if (href) {
     return (

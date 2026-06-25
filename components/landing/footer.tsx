@@ -1,17 +1,21 @@
+import Link from "next/link";
 import { Globe, Mail, MessageCircle, Share2 } from "lucide-react";
 import { Logo } from "@/components/ui/logo";
 import { BRAND } from "@/lib/brand";
 
+const linkClass =
+  "text-sm text-foreground/60 transition-colors hover:text-primary-start";
+
 const footerLinks = {
   product: [
-    { label: "Features", href: "#features" },
-    { label: "How It Works", href: "#how-it-works" },
-    { label: "Pricing", href: "#pricing" },
-    { label: "Contact", href: "#contact" },
+    { label: "Features", href: "/#features" },
+    { label: "How It Works", href: "/#how-it-works" },
+    { label: "Pricing", href: "/#pricing" },
+    { label: "Contact", href: "/#contact" },
   ],
   company: [
-    { label: "Contact", href: "#contact" },
-    { label: "Request Demo", href: "#contact" },
+    { label: "Contact", href: "/#contact" },
+    { label: "Request Demo", href: "/#contact" },
     { label: "Privacy Policy", href: "/privacy-policy" },
     { label: "Terms of Service", href: "/terms-of-service" },
   ],
@@ -23,6 +27,28 @@ const socials = [
   { icon: MessageCircle, href: "#", label: "Chat" },
   { icon: Mail, href: `mailto:${BRAND.email}`, label: "Email" },
 ];
+
+function FooterLink({
+  href,
+  children,
+}: {
+  href: string;
+  children: React.ReactNode;
+}) {
+  if (href.startsWith("/")) {
+    return (
+      <Link href={href} className={linkClass}>
+        {children}
+      </Link>
+    );
+  }
+
+  return (
+    <a href={href} className={linkClass}>
+      {children}
+    </a>
+  );
+}
 
 export function Footer() {
   return (
@@ -55,12 +81,7 @@ export function Footer() {
             <ul className="mt-4 space-y-3">
               {footerLinks.product.map((link) => (
                 <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="text-sm text-foreground/60 transition-colors hover:text-primary-start"
-                  >
-                    {link.label}
-                  </a>
+                  <FooterLink href={link.href}>{link.label}</FooterLink>
                 </li>
               ))}
             </ul>
@@ -71,12 +92,7 @@ export function Footer() {
             <ul className="mt-4 space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="text-sm text-foreground/60 transition-colors hover:text-primary-start"
-                  >
-                    {link.label}
-                  </a>
+                  <FooterLink href={link.href}>{link.label}</FooterLink>
                 </li>
               ))}
             </ul>
@@ -88,18 +104,12 @@ export function Footer() {
             </h4>
             <ul className="mt-4 space-y-3">
               <li>
-                <a
-                  href={`mailto:${BRAND.email}`}
-                  className="text-sm text-foreground/60 transition-colors hover:text-primary-start"
-                >
+                <a href={`mailto:${BRAND.email}`} className={linkClass}>
                   {BRAND.email}
                 </a>
               </li>
               <li>
-                <a
-                  href={`tel:+${BRAND.phone}`}
-                  className="text-sm text-foreground/60 transition-colors hover:text-primary-start"
-                >
+                <a href={`tel:+${BRAND.phone}`} className={linkClass}>
                   {BRAND.phoneDisplay}
                 </a>
               </li>

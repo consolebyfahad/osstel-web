@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
@@ -8,10 +9,10 @@ import { LiquidGlassToggle } from "@/components/ui/liquid-glass-toggle";
 import { Logo } from "@/components/ui/logo";
 
 const navLinks = [
-  { label: "Features", href: "#features" },
-  { label: "How It Works", href: "#how-it-works" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "Contact", href: "#contact" },
+  { label: "Features", href: "/#features" },
+  { label: "How It Works", href: "/#how-it-works" },
+  { label: "Pricing", href: "/#pricing" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export function Navbar() {
@@ -40,22 +41,22 @@ export function Navbar() {
 
         <div className="hidden items-center gap-8 md:flex">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
               className="text-sm font-medium text-foreground/70 transition-colors hover:text-primary-start"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </div>
 
         <div className="hidden items-center gap-3 md:flex">
           <LiquidGlassToggle />
-          <Button variant="outline" href="#contact">
+          <Button variant="outline" href="/#contact">
             Request Demo
           </Button>
-          <Button href="#contact">Download App</Button>
+          <Button href="/#contact">Download App</Button>
         </div>
 
         <div className="flex items-center gap-2 md:hidden">
@@ -79,20 +80,20 @@ export function Navbar() {
         >
           <div className="flex flex-col gap-4 px-4 py-6">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 className="text-base font-medium text-foreground/80"
                 onClick={() => setMobileOpen(false)}
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
             <div className="flex flex-col gap-3 pt-2">
-              <Button variant="outline" href="#contact">
+              <Button variant="outline" href="/#contact">
                 Request Demo
               </Button>
-              <Button href="#contact">Download App</Button>
+              <Button href="/#contact">Download App</Button>
             </div>
           </div>
         </motion.div>
