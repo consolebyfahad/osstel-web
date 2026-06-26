@@ -5,6 +5,7 @@ import { TrustProblem } from "@/components/landing/trust-problem";
 import { Solution } from "@/components/landing/solution";
 import { Features } from "@/components/landing/features";
 import { HowItWorks } from "@/components/landing/how-it-works";
+import { AppPreview } from "@/components/landing/app-preview";
 import { Pricing } from "@/components/landing/pricing";
 import { Contact } from "@/components/landing/contact";
 import { Footer } from "@/components/landing/footer";
@@ -29,6 +30,7 @@ export default function Home() {
         <Solution />
         <Features />
         <HowItWorks />
+        <AppPreview />
         <Pricing />
         <Contact />
       </main>
