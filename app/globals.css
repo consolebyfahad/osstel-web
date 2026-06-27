@@ -38,9 +38,9 @@
     0 2px 8px rgba(5, 14, 45, 0.04);
   --glass-blur: 22px;
 
-  --orb-cyan: rgba(85, 224, 255, 0.18);
-  --orb-royal: rgba(58, 141, 255, 0.14);
-  --orb-violet: rgba(162, 140, 255, 0.12);
+  --orb-cyan: rgba(85, 224, 255, 0.12);
+  --orb-royal: rgba(58, 141, 255, 0.08);
+  --orb-violet: rgba(162, 140, 255, 0.08);
 
   --switch-track: rgba(255, 255, 255, 0.55);
   --switch-track-border: rgba(85, 224, 255, 0.35);
@@ -49,7 +49,7 @@
   --btn-text: #ffffff;
 }
 
-/* ─── Dark theme — midnight logo center + glowing accents ─── */
+/* ─── Dark theme — midnight logo center + cyan/violet glow ─── */
 .dark {
   --background: #050e2d;
   --foreground: #eef3ff;
@@ -57,7 +57,7 @@
   --primary-start: #55e0ff;
   --primary-mid: #6c5ce7;
   --primary-end: #a28cff;
-  --accent: #ffea70;
+  --accent: #55e0ff;
   --accent-soft: #1b264f;
   --accent-foreground: #050e2d;
   --muted: #8b9dc3;
@@ -69,9 +69,9 @@
   --navy: #1b264f;
   --glow-cyan: rgba(85, 224, 255, 0.22);
   --glow-royal: rgba(58, 141, 255, 0.18);
-  --glow-violet: rgba(162, 140, 255, 0.2);
-  --glow-yellow: rgba(255, 234, 112, 0.35);
-  --warning: #ffea70;
+  --glow-violet: rgba(162, 140, 255, 0.22);
+  --glow-yellow: rgba(162, 140, 255, 0.2);
+  --warning: #a28cff;
   --success: #55e0ff;
 
   --glass-bg: rgba(27, 38, 79, 0.55);
@@ -84,15 +84,15 @@
     0 0 0 1px rgba(85, 224, 255, 0.06);
   --glass-blur: 28px;
 
-  --orb-cyan: rgba(85, 224, 255, 0.14);
-  --orb-royal: rgba(58, 141, 255, 0.1);
-  --orb-violet: rgba(108, 92, 231, 0.16);
+  --orb-cyan: rgba(85, 224, 255, 0.07);
+  --orb-royal: rgba(58, 141, 255, 0.05);
+  --orb-violet: rgba(108, 92, 231, 0.06);
 
   --switch-track: rgba(255, 255, 255, 0.06);
   --switch-track-border: rgba(85, 224, 255, 0.2);
   --switch-thumb: rgba(255, 255, 255, 0.14);
 
-  --btn-text: #050e2d;
+  --btn-text: #ffffff;
 }
 
 @theme inline {
@@ -120,19 +120,38 @@
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  background-color: var(--background);
 }
 
 body {
-  background: var(--background);
-  background-image:
-    radial-gradient(ellipse 85% 55% at 8% -5%, var(--orb-cyan) 0%, transparent 52%),
-    radial-gradient(ellipse 70% 50% at 92% 8%, var(--orb-violet) 0%, transparent 48%),
-    radial-gradient(ellipse 60% 45% at 50% 105%, var(--orb-royal) 0%, transparent 50%);
+  background: transparent;
   color: var(--foreground);
   font-family: var(--font-inter), system-ui, sans-serif;
   overflow-x: hidden;
   min-width: 320px;
-  transition: background-color 0.5s ease, color 0.4s ease;
+  transition: color 0.4s ease;
+}
+
+/* Single full-viewport background — avoids banded/chunked side columns */
+.site-background {
+  background-color: var(--background);
+  background-image:
+    radial-gradient(
+      ellipse 140% 90% at 50% -30%,
+      var(--orb-cyan) 0%,
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse 90% 70% at 100% 40%,
+      var(--orb-violet) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse 90% 70% at 0% 70%,
+      var(--orb-royal) 0%,
+      transparent 50%
+    );
+  transition: background-color 0.5s ease;
 }
 
 .section-pad {
@@ -283,7 +302,11 @@ body {
 }
 
 .liquid-glass-switch-icon-sun.liquid-glass-switch-icon-active {
-  color: var(--accent);
+  color: var(--warning);
+}
+
+.dark .liquid-glass-switch-icon-sun.liquid-glass-switch-icon-active {
+  color: var(--primary-start);
 }
 
 .liquid-glass-switch-thumb {
@@ -315,13 +338,13 @@ body {
   background:
     linear-gradient(
       160deg,
-      rgba(255, 234, 112, 0.35) 0%,
-      rgba(255, 255, 255, 0.12) 100%
+      rgba(255, 255, 255, 0.22) 0%,
+      rgba(85, 224, 255, 0.12) 100%
     );
-  border-color: rgba(255, 234, 112, 0.35);
+  border-color: rgba(85, 224, 255, 0.28);
   box-shadow:
-    0 2px 16px var(--glow-yellow),
-    0 1px 0 rgba(255, 255, 255, 0.15) inset;
+    0 2px 16px var(--glow-cyan),
+    0 1px 0 rgba(255, 255, 255, 0.12) inset;
 }
 
 .liquid-glass-switch-thumb-glow {
@@ -400,7 +423,7 @@ html.theme-transition-active:not(:has(::view-transition)) body {
   background-clip: text;
 }
 
-/* Primary CTA — royal ring in light, golden glow in dark */
+/* Primary CTA — logo ring gradient in both themes */
 .btn-gradient {
   background: linear-gradient(
     135deg,
@@ -418,35 +441,30 @@ html.theme-transition-active:not(:has(::view-transition)) body {
 }
 
 .dark .btn-gradient {
-  background: linear-gradient(
-    135deg,
-    var(--accent) 0%,
-    color-mix(in srgb, var(--accent) 85%, #ffd93d) 100%
-  );
-  color: var(--accent-foreground);
-  box-shadow: 0 4px 28px var(--glow-yellow);
+  box-shadow: 0 4px 28px var(--glow-cyan);
 }
 
 .dark .btn-gradient:hover {
-  box-shadow: 0 8px 44px var(--glow-yellow);
+  box-shadow: 0 8px 44px var(--glow-violet);
   filter: brightness(1.06);
 }
 
-/* Accent highlight chip */
+/* Accent highlight chip — yellow in light, cyan in dark */
 .chip-accent {
-  background: color-mix(in srgb, var(--accent) 22%, transparent);
+  background: color-mix(in srgb, #ffea70 22%, transparent);
   color: color-mix(in srgb, var(--accent-foreground) 90%, var(--foreground));
-  border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+  border: 1px solid color-mix(in srgb, #ffea70 35%, transparent);
 }
 
 .dark .chip-accent {
-  background: color-mix(in srgb, var(--accent) 18%, transparent);
-  color: var(--accent);
+  background: color-mix(in srgb, var(--primary-start) 18%, transparent);
+  color: var(--primary-start);
+  border: 1px solid color-mix(in srgb, var(--primary-start) 30%, transparent);
 }
 
-/* Glows */
+/* Glows — kept subtle to avoid visible bands on large surfaces */
 .glow-primary {
-  box-shadow: 0 0 60px color-mix(in srgb, var(--primary-start) 14%, transparent);
+  box-shadow: 0 8px 40px color-mix(in srgb, var(--primary-start) 8%, transparent);
 }
 
 .glow-accent {
@@ -485,18 +503,20 @@ html.theme-transition-active:not(:has(::view-transition)) body {
 .iphone-frame {
   position: relative;
   background: linear-gradient(165deg, #1b264f 0%, #050e2d 55%, #243060 100%);
-  border-radius: 48px;
-  padding: 11px;
+  border-radius: clamp(36px, 8vw, 48px);
+  padding: clamp(8px, 2vw, 11px);
   box-shadow:
     0 0 0 1px rgba(85, 224, 255, 0.15) inset,
-    0 40px 80px -20px color-mix(in srgb, var(--primary-mid) 35%, transparent);
+    0 24px 60px -16px color-mix(in srgb, var(--primary-mid) 40%, transparent),
+    0 8px 24px rgba(5, 14, 45, 0.35);
 }
 
 .iphone-screen {
-  border-radius: 38px;
+  position: relative;
+  border-radius: clamp(28px, 6vw, 38px);
   overflow: hidden;
-  background: var(--background);
-  min-height: 420px;
+  background: #050e2d;
+  aspect-ratio: 1206 / 2622;
 }
 
 .iphone-notch {
@@ -523,4 +543,190 @@ html.theme-transition-active:not(:has(::view-transition)) body {
 
 .dark .animate-blob {
   opacity: 0.5;
+}
+
+/* Dot grid background */
+.dot-pattern {
+  background-image: radial-gradient(
+    color-mix(in srgb, var(--primary-start) 22%, transparent) 1px,
+    transparent 1px
+  );
+  background-size: 22px 22px;
+}
+
+/* Shimmer badge */
+.badge-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.badge-shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 35%,
+    color-mix(in srgb, var(--primary-start) 18%, transparent) 50%,
+    transparent 65%
+  );
+  transform: translateX(-120%);
+  animation: badge-shimmer 4s ease-in-out infinite;
+}
+
+@keyframes badge-shimmer {
+  0%,
+  100% {
+    transform: translateX(-120%);
+  }
+  50% {
+    transform: translateX(120%);
+  }
+}
+
+/* Card hover shine sweep */
+.card-shine {
+  background: linear-gradient(
+    115deg,
+    transparent 40%,
+    color-mix(in srgb, var(--foreground) 6%, transparent) 50%,
+    transparent 60%
+  );
+  transform: translateX(-100%);
+  animation: card-shine 6s ease-in-out infinite;
+}
+
+@keyframes card-shine {
+  0%,
+  100% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(100%);
+  }
+}
+
+/* Animated gradient text shimmer */
+.gradient-text-shimmer {
+  background: linear-gradient(
+    120deg,
+    var(--accent-soft) 0%,
+    var(--primary-start) 25%,
+    var(--primary-mid) 50%,
+    var(--primary-end) 75%,
+    var(--accent-soft) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shimmer 6s linear infinite;
+}
+
+@keyframes gradient-shimmer {
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* Marquee */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-slow {
+  animation: marquee 45s linear infinite;
+}
+
+.marquee-normal {
+  animation: marquee 32s linear infinite;
+}
+
+.marquee-fast {
+  animation: marquee 22s linear infinite;
+}
+
+.marquee-reverse {
+  animation-direction: reverse;
+}
+
+/* Border beam — rotating gradient ring */
+.border-beam::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(
+    from var(--beam-angle, 0deg),
+    transparent 0deg,
+    var(--primary-start) 60deg,
+    var(--primary-end) 120deg,
+    transparent 180deg
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: border-beam-spin var(--beam-duration, 8s) linear infinite;
+}
+
+@property --beam-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes border-beam-spin {
+  to {
+    --beam-angle: 360deg;
+  }
+}
+
+/* Nav link underline */
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  height: 2px;
+  width: 100%;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, var(--primary-start), var(--primary-end));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+/* Section divider glow */
+.section-glow-top {
+  position: relative;
+}
+
+.section-glow-top::before {
+  content: "";
+  position: absolute;
+  inset-inline: 10%;
+  top: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--primary-start) 35%, transparent),
+    transparent
+  );
 }

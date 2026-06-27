@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { JsonLd } from "@/components/seo/json-ld";
+import { SiteBackground } from "@/components/ui/site-background";
 import "./globals.css";
 import { buildRootMetadata } from "@/lib/seo";
 
@@ -24,7 +25,8 @@ export default function RootLayout({
       className={`${inter.variable} h-full scroll-smooth`}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col antialiased bg-background text-foreground">
+      <body className="relative min-h-full flex flex-col antialiased text-foreground">
+        <SiteBackground />
         <JsonLd />
         <ThemeProvider>{children}</ThemeProvider>
       </body>

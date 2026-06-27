@@ -36,7 +36,7 @@ export function LegalPage({
             Back to home
           </Link>
 
-          <div className="glass rounded-3xl p-6 sm:p-10 glow-primary">
+          <div className="rounded-3xl border border-border surface p-6 sm:p-10">
             <p className="text-sm font-semibold uppercase tracking-wider text-primary-start">
               Legal
             </p>

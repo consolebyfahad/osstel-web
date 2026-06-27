@@ -1,172 +1,25 @@
 "use client";
 
-import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import Image from "next/image";
 import { ArrowDownToLine, Banknote, CalendarCheck, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { FloatingBlobs } from "@/components/ui/floating-blobs";
+import { PhoneMockup } from "@/components/ui/phone-mockup";
+import { AnimatedNumber } from "@/components/ui/animated-number";
 import { FadeIn } from "@/components/ui/animated-section";
+import { WordReveal } from "@/components/ui/text-reveal";
+import { APP_SCREENSHOTS } from "@/lib/app-screenshots";
 import { BRAND } from "@/lib/brand";
 
-function PhoneMockup() {
-  return (
-    <div className="relative mx-auto w-[280px] sm:w-[300px]">
-      {/* Glow behind phone */}
-      <div className="absolute inset-0 -z-10 scale-110 rounded-full bg-gradient-to-br from-primary-start/30 to-accent/20 blur-3xl" />
+const dashboardShot = APP_SCREENSHOTS[0];
 
-      {/* Floating UI cards */}
-      <motion.div
-        className="glass absolute -left-8 top-16 z-10 rounded-2xl p-3 shadow-xl sm:-left-12"
-        animate={{ y: [0, -10, 0] }}
-        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-      >
-        <div className="flex items-center gap-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent/20">
-            <Banknote size={16} className="text-accent" />
-          </div>
-          <div>
-            <p className="text-xs text-foreground/50">Rent Collected</p>
-            <p className="text-sm font-bold text-foreground">Rs. 1,24,500</p>
-          </div>
-        </div>
-      </motion.div>
-
-      <motion.div
-        className="glass absolute -right-6 top-32 z-10 rounded-2xl p-3 shadow-xl sm:-right-10"
-        animate={{ y: [0, 12, 0] }}
-        transition={{
-          duration: 5,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 1,
-        }}
-      >
-        <div className="flex items-center gap-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary-start/20">
-            <Users size={16} className="text-primary-start" />
-          </div>
-          <div>
-            <p className="text-xs text-foreground/50">Active Tenants</p>
-            <p className="text-sm font-bold text-foreground">48</p>
-          </div>
-        </div>
-      </motion.div>
-
-      <motion.div
-        className="glass absolute -right-4 bottom-24 z-10 rounded-2xl p-3 shadow-xl sm:-right-8"
-        animate={{ y: [0, -8, 0] }}
-        transition={{
-          duration: 3.5,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 0.5,
-        }}
-      >
-        <div className="flex items-center gap-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent/25">
-            <CalendarCheck size={16} className="text-accent-foreground dark:text-accent" />
-          </div>
-          <div>
-            <p className="text-xs text-foreground/50">On-time Payments</p>
-            <p className="text-sm font-bold text-primary-start">92%</p>
-          </div>
-        </div>
-      </motion.div>
-
-      {/* Phone */}
-      <motion.div
-        className="phone-frame relative z-0"
-        animate={{ y: [0, -6, 0] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-      >
-        <div className="phone-screen">
-          {/* Status bar */}
-          <div className="flex items-center justify-between surface px-5 py-3">
-            <span className="text-xs font-semibold text-foreground">9:41</span>
-            <div className="mx-auto h-6 w-24 rounded-full bg-foreground/10" />
-            <div className="flex gap-1">
-              <div className="h-2.5 w-2.5 rounded-full bg-foreground/30" />
-              <div className="h-2.5 w-2.5 rounded-full bg-foreground/30" />
-            </div>
-          </div>
-
-          {/* App content */}
-          <div className="bg-gradient-to-b from-primary-start/8 to-background px-4 pb-6 pt-2">
-            <div className="flex items-center gap-2">
-              <Image
-                src={BRAND.logo}
-                alt=""
-                width={28}
-                height={28}
-                className="rounded-lg"
-              />
-              <div>
-                <p className="text-xs text-foreground/50">
-                  Assalam o Alaikum 👋
-                </p>
-                <p className="text-lg font-bold text-foreground">
-                  Al-Noor Hostel, Lahore
-                </p>
-              </div>
-            </div>
-
-            <div className="mt-4 rounded-2xl btn-gradient p-4 text-white shadow-lg shadow-primary-start/20">
-              <p className="text-xs opacity-80">This Month&apos;s Collection</p>
-              <p className="text-2xl font-bold">Rs. 2,45,000</p>
-              <div className="mt-2 h-1.5 rounded-full bg-white/30">
-                <div className="h-full w-3/4 rounded-full bg-white" />
-              </div>
-              <p className="mt-1 text-xs opacity-70">75% collected</p>
-            </div>
-
-            <div className="mt-4 grid grid-cols-2 gap-3">
-              {[
-                { label: "Rooms", value: "32", color: "bg-primary-start/10" },
-                { label: "Pending", value: "6", color: "bg-amber-500/10" },
-                { label: "Paid", value: "26", color: "bg-accent/20" },
-                { label: "Complaints", value: "2", color: "bg-primary-end/10" },
-              ].map((item) => (
-                <div
-                  key={item.label}
-                  className={`rounded-xl ${item.color} p-3`}
-                >
-                  <p className="text-xs text-foreground/50">{item.label}</p>
-                  <p className="text-lg font-bold text-foreground">
-                    {item.value}
-                  </p>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-4 space-y-2">
-              <p className="text-xs font-semibold text-foreground/60">
-                Recent Payments
-              </p>
-              {[
-                "Ahmed K. — Rs. 12,000",
-                "Fatima A. — Rs. 10,500",
-                "Hassan R. — Rs. 12,000",
-              ].map((payment) => (
-                <div
-                  key={payment}
-                  className="flex items-center justify-between rounded-xl surface p-2.5 shadow-sm"
-                >
-                  <span className="text-xs font-medium text-foreground">
-                    {payment}
-                  </span>
-                  <span className="rounded-full bg-green-100 px-2 py-0.5 text-[10px] font-semibold text-green-700">
-                    Verified
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </motion.div>
-    </div>
-  );
-}
+const stats = [
+  { value: 500, suffix: "+", label: "Hostels" },
+  { value: 10, suffix: "K+", label: "Tenants" },
+  { value: 5, prefix: "Rs. ", suffix: "Cr+", label: "Rent Collected" },
+];
 
 export function Hero() {
   const ref = useRef(null);
@@ -174,26 +27,25 @@ export function Hero() {
     target: ref,
     offset: ["start start", "end start"],
   });
-  const y = useTransform(scrollYProgress, [0, 1], [0, 150]);
+  const y = useTransform(scrollYProgress, [0, 1], [0, 120]);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   return (
     <section
       ref={ref}
       id="hero"
-      className="relative min-h-screen overflow-hidden pt-28 pb-16 sm:pt-32 sm:pb-24"
+      className="relative min-h-[100dvh] overflow-hidden pt-24 pb-12 sm:pt-28 sm:pb-20 lg:pt-32 lg:pb-24"
     >
       <FloatingBlobs />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          {/* Left content */}
+        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-12 xl:gap-16">
           <FadeIn className="text-center lg:text-left">
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2 }}
-              className="mb-6 inline-flex items-center gap-2 rounded-full glass px-4 py-2 text-sm font-medium text-foreground/70"
+              initial={{ opacity: 0, scale: 0.9, y: 12 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ delay: 0.15, type: "spring", stiffness: 260, damping: 22 }}
+              className="mb-5 inline-flex items-center gap-2 rounded-full glass px-4 py-2 text-sm font-medium text-foreground/70 sm:mb-6"
             >
               <Image
                 src={BRAND.logo}
@@ -205,40 +57,40 @@ export function Hero() {
               {BRAND.tagline}
             </motion.div>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.7 }}
-              className="text-4xl font-bold leading-tight tracking-tight text-foreground sm:text-5xl lg:text-6xl"
-            >
-              {BRAND.name}: Hostel &{" "}
-              <span className="gradient-text">Hotel Management System</span>
-            </motion.h1>
+            <h1 className="text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl sm:text-5xl lg:text-6xl">
+              <WordReveal text={`${BRAND.name}: Hostel &`} delay={0.2} />
+              <br />
+              <WordReveal
+                text="Hotel Management System"
+                delay={0.35}
+                className="gradient-text-shimmer"
+              />
+            </h1>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.45 }}
-              className="mt-6 max-w-xl text-base leading-relaxed text-foreground/60 sm:text-lg lg:mx-0 mx-auto"
+              transition={{ delay: 0.55 }}
+              className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-foreground/60 sm:mt-6 sm:text-lg lg:mx-0"
             >
               The complete hostel and hotel management software for owners in{" "}
               {BRAND.country}. Manage tenants, rooms, rent collection, payments,
-              and complaints — all in one OSSTEL platform.
+              and complaints — all in one {BRAND.name} platform.
             </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.55 }}
-              className="mt-8 flex flex-col items-center gap-4 sm:flex-row lg:justify-start justify-center"
+              transition={{ delay: 0.65 }}
+              className="mt-7 flex flex-col items-stretch gap-3 sm:mt-8 sm:flex-row sm:items-center sm:justify-center lg:justify-start"
             >
-              <Button href="#contact" className="w-full sm:w-auto">
+              <Button href="/#contact" className="w-full sm:w-auto">
                 <ArrowDownToLine size={18} />
                 Download App
               </Button>
               <Button
                 variant="secondary"
-                href="#contact"
+                href="/#contact"
                 className="w-full sm:w-auto"
               >
                 Request Demo
@@ -246,31 +98,100 @@ export function Hero() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.7 }}
-              className="mt-10 flex items-center justify-center gap-6 lg:justify-start"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8 }}
+              className="mt-8 flex flex-wrap items-center justify-center gap-5 sm:gap-6 lg:justify-start"
             >
-              <div className="text-center">
-                <p className="text-2xl font-bold text-foreground">500+</p>
-                <p className="text-xs text-foreground/50">Hostels</p>
-              </div>
-              <div className="h-8 w-px bg-foreground/10" />
-              <div className="text-center">
-                <p className="text-2xl font-bold text-foreground">10K+</p>
-                <p className="text-xs text-foreground/50">Tenants</p>
-              </div>
-              <div className="h-8 w-px bg-foreground/10" />
-              <div className="text-center">
-                <p className="text-2xl font-bold text-foreground">Rs. 5Cr+</p>
-                <p className="text-xs text-foreground/50">Rent Collected</p>
-              </div>
+              {stats.map((stat, i) => (
+                <div key={stat.label} className="flex items-center gap-5 sm:gap-6">
+                  {i > 0 && (
+                    <div className="hidden h-8 w-px bg-foreground/10 sm:block" />
+                  )}
+                  <div className="text-center lg:text-left">
+                    <p className="text-xl font-bold text-foreground sm:text-2xl">
+                      <AnimatedNumber
+                        value={stat.value}
+                        prefix={stat.prefix}
+                        suffix={stat.suffix}
+                      />
+                    </p>
+                    <p className="text-xs text-foreground/50">{stat.label}</p>
+                  </div>
+                </div>
+              ))}
             </motion.div>
           </FadeIn>
 
-          {/* Right - Phone mockup with parallax */}
-          <motion.div style={{ y, opacity }} className="relative">
-            <PhoneMockup />
+          <motion.div
+            style={{ y, opacity }}
+            className="relative mx-auto w-full max-w-[320px] sm:max-w-none lg:mx-0"
+          >
+            <motion.div
+              className="glass absolute -left-2 top-12 z-10 hidden rounded-2xl p-3 shadow-xl md:block lg:-left-10"
+              animate={{ y: [0, -10, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <div className="flex items-center gap-2">
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary-start/15">
+                  <Banknote size={16} className="text-primary-start" />
+                </div>
+                <div>
+                  <p className="text-xs text-foreground/50">Rent Collected</p>
+                  <p className="text-sm font-bold text-foreground">Rs. 1,24,500</p>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              className="glass absolute -right-2 top-28 z-10 hidden rounded-2xl p-3 shadow-xl md:block lg:-right-8"
+              animate={{ y: [0, 12, 0] }}
+              transition={{
+                duration: 5,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 1,
+              }}
+            >
+              <div className="flex items-center gap-2">
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary-end/15">
+                  <Users size={16} className="text-primary-end" />
+                </div>
+                <div>
+                  <p className="text-xs text-foreground/50">Active Tenants</p>
+                  <p className="text-sm font-bold text-foreground">48</p>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              className="glass absolute -right-1 bottom-16 z-10 hidden rounded-2xl p-3 shadow-xl md:block lg:-right-6"
+              animate={{ y: [0, -8, 0] }}
+              transition={{
+                duration: 3.5,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 0.5,
+              }}
+            >
+              <div className="flex items-center gap-2">
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-success/15">
+                  <CalendarCheck size={16} className="text-success" />
+                </div>
+                <div>
+                  <p className="text-xs text-foreground/50">On-time Payments</p>
+                  <p className="text-sm font-bold text-primary-start">92%</p>
+                </div>
+              </div>
+            </motion.div>
+
+            <PhoneMockup
+              src={dashboardShot.src}
+              alt={dashboardShot.alt}
+              size="lg"
+              priority
+              showGlow
+            />
           </motion.div>
         </div>
       </div>

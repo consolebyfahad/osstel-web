@@ -9,8 +9,13 @@ import {
   MessageSquare,
   Users,
 } from "lucide-react";
-import { AnimatedSection } from "@/components/ui/animated-section";
-
+import {
+  AnimatedSection,
+  StaggerContainer,
+  StaggerItem,
+} from "@/components/ui/animated-section";
+import { SectionHeader } from "@/components/ui/section-header";
+import { SpotlightCard } from "@/components/ui/spotlight-card";
 const features = [
   {
     icon: Users,
@@ -18,6 +23,7 @@ const features = [
     description:
       "Add tenants, assign rooms, store contact details and documents — all in one profile.",
     gradient: "from-primary-start/20 to-primary-end/10",
+    featured: true,
   },
   {
     icon: BedDouble,
@@ -58,37 +64,35 @@ const features = [
 
 export function Features() {
   return (
-    <section id="features" className="relative py-20 sm:py-28">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <AnimatedSection className="text-center">
-          <span className="text-sm font-semibold uppercase tracking-wider text-primary-start">
-            Features
-          </span>
-          <h2 className="mt-3 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            Hostel & Hotel Management Software Features
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base text-foreground/60">
-            OSSTEL includes everything you need in a modern hostel management
-            system and hotel management system — built for owners and property
-            managers in Pakistan.
-          </p>
-        </AnimatedSection>
+    <section id="features" className="section-glow-top relative py-20 sm:py-28">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <SectionHeader
+          eyebrow="Features"
+          title={
+            <>
+              Hostel & Hotel Management{" "}
+              <span className="gradient-text">Software Features</span>
+            </>
+          }
+          description="OSSTEL includes everything you need in a modern hostel management system and hotel management system — built for owners and property managers in Pakistan."
+        />
 
-        {/* Desktop grid */}
-        <div className="mt-14 hidden gap-6 sm:grid sm:grid-cols-2 lg:grid-cols-3">
+        <StaggerContainer className="mt-14 hidden gap-6 sm:grid sm:grid-cols-2 lg:grid-cols-3">
+          {features.map((feature) => (
+            <StaggerItem
+              key={feature.title}
+              className={feature.featured ? "sm:col-span-2 lg:col-span-1 lg:row-span-1" : ""}
+            >
+              <FeatureCard feature={feature} />
+            </StaggerItem>
+          ))}
+        </StaggerContainer>
+
+        <div className="mt-10 flex gap-4 overflow-x-auto pb-4 no-scrollbar sm:hidden snap-x snap-mandatory">
           {features.map((feature, i) => (
-            <AnimatedSection key={feature.title} delay={i * 0.08}>
+            <AnimatedSection key={feature.title} delay={i * 0.06} className="w-[85vw] shrink-0 snap-center">
               <FeatureCard feature={feature} />
             </AnimatedSection>
-          ))}
-        </div>
-
-        {/* Mobile swipeable carousel */}
-        <div className="mt-10 flex gap-4 overflow-x-auto pb-4 no-scrollbar sm:hidden snap-x snap-mandatory">
-          {features.map((feature) => (
-            <div key={feature.title} className="w-[85vw] shrink-0 snap-center">
-              <FeatureCard feature={feature} />
-            </div>
           ))}
         </div>
       </div>
@@ -96,18 +100,18 @@ export function Features() {
   );
 }
 
-function FeatureCard({ feature }: { feature: (typeof features)[number] }) {
+function FeatureCard({
+  feature,
+}: {
+  feature: (typeof features)[number];
+}) {
   return (
-    <motion.div
-      whileHover={{ y: -10, scale: 1.02 }}
-      transition={{ type: "spring", stiffness: 300, damping: 20 }}
-      className={`glass group relative h-full overflow-hidden rounded-3xl bg-gradient-to-br ${feature.gradient} p-7 transition-all duration-300 hover:shadow-2xl hover:shadow-primary-start/10`}
+    <SpotlightCard
+      className={`glass h-full bg-gradient-to-br ${feature.gradient} p-7 glow-primary`}
     >
-      <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-primary-start/5 transition-transform duration-500 group-hover:scale-150" />
-
       <motion.div
-        whileHover={{ scale: 1.1, rotate: 5 }}
-        transition={{ type: "spring", stiffness: 400 }}
+        whileHover={{ scale: 1.08, rotate: 4 }}
+        transition={{ type: "spring", stiffness: 400, damping: 18 }}
         className="relative mb-5 flex h-14 w-14 items-center justify-center rounded-2xl surface shadow-sm"
       >
         <feature.icon size={26} className="text-primary-start" />
@@ -119,6 +123,6 @@ function FeatureCard({ feature }: { feature: (typeof features)[number] }) {
       <p className="relative mt-2 text-sm leading-relaxed text-foreground/60">
         {feature.description}
       </p>
-    </motion.div>
+    </SpotlightCard>
   );
 }

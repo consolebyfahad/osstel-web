@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { AlertCircle, MessageCircle, Send } from "lucide-react";
 import { useState, type FormEvent } from "react";
 import { AnimatedSection } from "@/components/ui/animated-section";
+import { SectionHeader } from "@/components/ui/section-header";
 import { Button } from "@/components/ui/button";
 import { BRAND } from "@/lib/brand";
 import {
@@ -49,16 +50,17 @@ export function Contact() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
           <AnimatedSection>
-            <span className="text-sm font-semibold uppercase tracking-wider text-primary-start">
-              Contact
-            </span>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Let&apos;s Talk About Your Hostel
-            </h2>
-            <p className="mt-4 text-base leading-relaxed text-foreground/60">
-              Have questions? Want a personalized demo? Reach out and our team
-              will get back to you within 24 hours.
-            </p>
+            <SectionHeader
+              align="left"
+              eyebrow="Contact"
+              title={
+                <>
+                  Let&apos;s Talk About Your{" "}
+                  <span className="gradient-text">Hostel</span>
+                </>
+              }
+              description="Have questions? Want a personalized demo? Reach out and our team will get back to you within 24 hours."
+            />
 
             <div className="mt-8 space-y-4">
               <div className="glass rounded-2xl p-5">

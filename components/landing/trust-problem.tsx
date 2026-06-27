@@ -7,7 +7,12 @@ import {
   MessageSquareWarning,
   Wallet,
 } from "lucide-react";
-import { AnimatedSection } from "@/components/ui/animated-section";
+import {
+  StaggerContainer,
+  StaggerItem,
+} from "@/components/ui/animated-section";
+import { SectionHeader } from "@/components/ui/section-header";
+import { SpotlightCard } from "@/components/ui/spotlight-card";
 
 const painPoints = [
   {
@@ -46,32 +51,28 @@ const painPoints = [
 
 export function TrustProblem() {
   return (
-    <section className="relative py-20 sm:py-28">
+    <section className="section-glow-top relative py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <AnimatedSection className="text-center">
-          <span className="text-sm font-semibold uppercase tracking-wider text-primary-start">
-            The Problem
-          </span>
-          <h2 className="mt-3 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            Hostel Management Shouldn&apos;t Be This Hard
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base text-foreground/60">
-            Most hostel owners still rely on outdated methods that cost time,
-            money, and peace of mind.
-          </p>
-        </AnimatedSection>
+        <SectionHeader
+          eyebrow="The Problem"
+          title={
+            <>
+              Hostel Management Shouldn&apos;t Be{" "}
+              <span className="gradient-text">This Hard</span>
+            </>
+          }
+          description="Most hostel owners still rely on outdated methods that cost time, money, and peace of mind."
+        />
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {painPoints.map((point, i) => (
-            <AnimatedSection key={point.title} delay={i * 0.1}>
-              <motion.div
-                whileHover={{ y: -8, scale: 1.02 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className={`glass group h-full rounded-3xl bg-gradient-to-br ${point.color} p-6 glow-primary transition-shadow duration-300 hover:shadow-xl hover:shadow-primary-start/10`}
+        <StaggerContainer className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {painPoints.map((point) => (
+            <StaggerItem key={point.title}>
+              <SpotlightCard
+                className={`glass h-full bg-gradient-to-br ${point.color} p-6 glow-primary`}
               >
                 <motion.div
-                  whileHover={{ rotate: [0, -10, 10, 0] }}
-                  transition={{ duration: 0.5 }}
+                  whileHover={{ rotate: [0, -8, 8, 0] }}
+                  transition={{ duration: 0.45 }}
                   className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl surface shadow-sm"
                 >
                   <point.icon size={24} className={point.iconColor} />
@@ -82,10 +83,10 @@ export function TrustProblem() {
                 <p className="mt-2 text-sm leading-relaxed text-foreground/60">
                   {point.description}
                 </p>
-              </motion.div>
-            </AnimatedSection>
+              </SpotlightCard>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   );

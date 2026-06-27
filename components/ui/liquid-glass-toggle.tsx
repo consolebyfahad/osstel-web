@@ -74,9 +74,9 @@ export function LiquidGlassToggle({ className }: { className?: string }) {
         >
           <span className="liquid-glass-switch-thumb-glow" aria-hidden />
           {isDark ? (
-            <Moon size={13} className="text-accent" />
+            <Moon size={13} className="text-primary-start" />
           ) : (
-            <Sun size={13} className="text-accent-foreground dark:text-accent" />
+            <Sun size={13} className="text-warning" />
           )}
         </motion.span>
       </span>

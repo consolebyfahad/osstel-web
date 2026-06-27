@@ -10,6 +10,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { AnimatedSection } from "@/components/ui/animated-section";
+import { SectionHeader } from "@/components/ui/section-header";
 import { Button } from "@/components/ui/button";
 import { BRAND } from "@/lib/brand";
 
@@ -66,25 +67,20 @@ export function HowItWorks() {
       id="how-it-works"
       className="relative overflow-hidden py-20 sm:py-28"
     >
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-primary-start/[0.04] via-background to-accent/[0.04]" />
-      <div className="pointer-events-none absolute left-1/2 top-0 h-px w-3/4 -translate-x-1/2 bg-gradient-to-r from-transparent via-primary-start/20 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary-start/15 to-transparent" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <AnimatedSection className="text-center">
-          <span className="inline-block rounded-full bg-primary-start/10 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-primary-start">
-            How It Works
-          </span>
-          <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-            From Setup to Rent Collection
-            <br />
-            <span className="gradient-text">in 5 Easy Steps</span>
-          </h2>
-          <p className="mx-auto mt-4 max-w-xl text-base text-foreground/60 sm:text-lg">
-            Get your hostel running on {BRAND.name} in under an hour — no
-            technical skills needed.
-          </p>
-        </AnimatedSection>
+        <SectionHeader
+          eyebrow="How It Works"
+          title={
+            <>
+              From Setup to Rent Collection
+              <br />
+              <span className="gradient-text">in 5 Easy Steps</span>
+            </>
+          }
+          description={`Get your hostel running on ${BRAND.name} in under an hour — no technical skills needed.`}
+        />
 
         {/* Desktop zigzag path */}
         <div className="relative mt-16 hidden lg:block">
