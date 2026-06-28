@@ -2,10 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Check, Sparkles } from "lucide-react";
-import { StaggerContainer, StaggerItem } from "@/components/ui/animated-section";
-import { BorderBeam } from "@/components/ui/border-beam";
-import { SectionHeader } from "@/components/ui/section-header";
-import { SpotlightCard } from "@/components/ui/spotlight-card";
+import { AnimatedSection } from "@/components/ui/animated-section";
 import { Button } from "@/components/ui/button";
 import { BRAND } from "@/lib/brand";
 
@@ -67,136 +64,112 @@ const plans = [
 
 export function Pricing() {
   return (
-    <section id="pricing" className="section-glow-top relative py-20 sm:py-28">
+    <section id="pricing" className="relative py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <SectionHeader
-          eyebrow="Pricing"
-          title={
-            <>
-              Simple, Transparent{" "}
-              <span className="gradient-text">Pricing</span>
-            </>
-          }
-          description="Start free. Upgrade when you grow. No hidden fees."
-        />
+        <AnimatedSection className="text-center">
+          <span className="text-sm font-semibold uppercase tracking-wider text-primary-start">
+            Pricing
+          </span>
+          <h2 className="mt-3 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            Simple, Transparent Pricing
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-base text-foreground/60">
+            Start free. Upgrade when you grow. No hidden fees.
+          </p>
+        </AnimatedSection>
 
-        <StaggerContainer className="mt-14 grid gap-6 lg:grid-cols-3 lg:gap-8">
-          {plans.map((plan) => (
-            <StaggerItem key={plan.name} className="h-full">
-              {plan.popular ? (
-                <motion.div
-                  whileHover={{ y: -10 }}
-                  transition={{ type: "spring", stiffness: 280, damping: 22 }}
-                  className="relative flex h-full flex-col rounded-3xl btn-gradient p-8 text-white shadow-2xl shadow-primary-start/30"
-                >
-                  <BorderBeam />
+        <div className="mt-14 grid gap-6 lg:grid-cols-3 lg:gap-8">
+          {plans.map((plan, i) => (
+            <AnimatedSection key={plan.name} delay={i * 0.1}>
+              <motion.div
+                whileHover={{ y: -8 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className={`relative flex h-full flex-col rounded-3xl p-8 transition-shadow duration-300 ${
+                  plan.popular
+                    ? "btn-gradient text-white shadow-2xl shadow-primary-start/30"
+                    : "glass glow-primary hover:shadow-xl hover:shadow-primary-start/10"
+                }`}
+              >
+                {plan.popular && (
                   <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                    <motion.span
-                      animate={{ y: [0, -4, 0] }}
-                      transition={{ duration: 2.5, repeat: Infinity }}
-                      className="inline-flex items-center gap-1.5 rounded-full surface px-4 py-1.5 text-xs font-bold text-primary-start shadow-lg"
-                    >
+                    <span className="inline-flex items-center gap-1.5 rounded-full surface px-4 py-1.5 text-xs font-bold text-primary-start shadow-lg">
                       <Sparkles size={12} />
                       Most Popular
-                    </motion.span>
+                    </span>
                   </div>
-                  <PricingContent plan={plan} popular />
-                </motion.div>
-              ) : (
-                <SpotlightCard className="glass flex h-full flex-col p-8 glow-primary">
-                  <PricingContent plan={plan} popular={false} />
-                </SpotlightCard>
-              )}
-            </StaggerItem>
+                )}
+
+                <div>
+                  <h3
+                    className={`text-lg font-semibold ${
+                      plan.popular ? "text-white" : "text-foreground"
+                    }`}
+                  >
+                    {plan.name}
+                  </h3>
+                  <div className="mt-4 flex items-baseline gap-1">
+                    <span
+                      className={`text-4xl font-bold ${
+                        plan.popular ? "text-white" : "text-foreground"
+                      }`}
+                    >
+                      {plan.price}
+                    </span>
+                    <span
+                      className={`text-sm ${
+                        plan.popular ? "text-white/70" : "text-foreground/50"
+                      }`}
+                    >
+                      {plan.period}
+                    </span>
+                  </div>
+                  <p
+                    className={`mt-3 text-sm ${
+                      plan.popular ? "text-white/80" : "text-foreground/60"
+                    }`}
+                  >
+                    {plan.description}
+                  </p>
+                </div>
+
+                <ul className="mt-8 flex-1 space-y-3">
+                  {plan.features.map((feature) => (
+                    <li key={feature} className="flex items-start gap-3">
+                      <Check
+                        size={16}
+                        className={`mt-0.5 shrink-0 ${
+                          plan.popular ? "text-accent" : "text-primary-start"
+                        }`}
+                      />
+                      <span
+                        className={`text-sm ${
+                          plan.popular ? "text-white/90" : "text-foreground/70"
+                        }`}
+                      >
+                        {feature}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="mt-8">
+                  <Button
+                    href="#contact"
+                    variant={plan.popular ? "secondary" : "primary"}
+                    className={`w-full ${
+                      plan.popular
+                        ? "!bg-surface !text-primary-start hover:!bg-surface-muted"
+                        : ""
+                    }`}
+                  >
+                    {plan.cta}
+                  </Button>
+                </div>
+              </motion.div>
+            </AnimatedSection>
           ))}
-        </StaggerContainer>
+        </div>
       </div>
     </section>
-  );
-}
-
-function PricingContent({
-  plan,
-  popular,
-}: {
-  plan: (typeof plans)[number];
-  popular: boolean;
-}) {
-  return (
-    <>
-      <div>
-        <h3
-          className={`text-lg font-semibold ${
-            popular ? "text-white" : "text-foreground"
-          }`}
-        >
-          {plan.name}
-        </h3>
-        <div className="mt-4 flex items-baseline gap-1">
-          <span
-            className={`text-4xl font-bold ${
-              popular ? "text-white" : "text-foreground"
-            }`}
-          >
-            {plan.price}
-          </span>
-          <span
-            className={`text-sm ${
-              popular ? "text-white/70" : "text-foreground/50"
-            }`}
-          >
-            {plan.period}
-          </span>
-        </div>
-        <p
-          className={`mt-3 text-sm ${
-            popular ? "text-white/80" : "text-foreground/60"
-          }`}
-        >
-          {plan.description}
-        </p>
-      </div>
-
-      <ul className="mt-8 flex-1 space-y-3">
-        {plan.features.map((feature, i) => (
-          <motion.li
-            key={feature}
-            initial={{ opacity: 0, x: -8 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ delay: i * 0.04 }}
-            viewport={{ once: true }}
-            className="flex items-start gap-3"
-          >
-            <Check
-              size={16}
-              className={`mt-0.5 shrink-0 ${
-                popular ? "text-accent" : "text-primary-start"
-              }`}
-            />
-            <span
-              className={`text-sm ${
-                popular ? "text-white/90" : "text-foreground/70"
-              }`}
-            >
-              {feature}
-            </span>
-          </motion.li>
-        ))}
-      </ul>
-
-      <div className="mt-8">
-        <Button
-          href="#contact"
-          variant={popular ? "secondary" : "primary"}
-          className={`w-full ${
-            popular
-              ? "!bg-surface !text-primary-start hover:!bg-surface-muted"
-              : ""
-          }`}
-        >
-          {plan.cta}
-        </Button>
-      </div>
-    </>
   );
 }

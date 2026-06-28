@@ -10,7 +10,6 @@ import { Pricing } from "@/components/landing/pricing";
 import { Contact } from "@/components/landing/contact";
 import { Footer } from "@/components/landing/footer";
 import { MobileStickyCTA } from "@/components/landing/mobile-sticky-cta";
-import { StatsBand } from "@/components/landing/stats-band";
 import { SEO_DESCRIPTION, SEO_TITLE } from "@/lib/seo";
 
 export const metadata: Metadata = {
@@ -27,7 +26,6 @@ export default function Home() {
       <Navbar />
       <main className="flex-1 pb-20 md:pb-0">
         <Hero />
-        <StatsBand />
         <TrustProblem />
         <Solution />
         <Features />
