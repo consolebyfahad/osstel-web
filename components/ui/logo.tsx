@@ -21,7 +21,7 @@ export function Logo({ variant = "full", size = "md", className = "" }: LogoProp
     <Link href="/" className={`flex items-center gap-2.5 ${className}`}>
       <Image
         src={BRAND.logo}
-        alt={`${BRAND.name} — hostel and hotel management system`}
+        alt={`${BRAND.name} — hostel management system`}
         width={icon}
         height={icon}
         className="rounded-xl"

@@ -58,7 +58,7 @@ export function Footer() {
           <div className="sm:col-span-2 lg:col-span-1">
             <Logo size="md" />
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-foreground/60">
-              {BRAND.name} is a hostel and hotel management system for{" "}
+              {BRAND.name} is a hostel management system for{" "}
               {BRAND.country}. {BRAND.tagline} — manage tenants, rooms, rent,
               and payments in one app.
             </p>

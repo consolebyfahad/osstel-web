@@ -19,7 +19,7 @@ const items = [
   { icon: ShieldCheck, label: "Secure Payments" },
   { icon: Zap, label: "Setup in 2 Minutes" },
   { icon: Building2, label: "Hostel Management" },
-  { icon: Users, label: "Hotel Management" },
+  { icon: Users, label: "Tenant Tracking" },
 ];
 
 export function StatsBand() {

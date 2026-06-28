@@ -74,7 +74,7 @@ export function Solution() {
                   <span className="gradient-text">Total Control.</span>
                 </>
               }
-              description={`${BRAND.name} replaces spreadsheets, WhatsApp threads, and manual tracking with one hostel and hotel management system built for property owners in ${BRAND.country}.`}
+              description={`${BRAND.name} replaces spreadsheets, WhatsApp threads, and manual tracking with one hostel management system built for property owners in ${BRAND.country}.`}
             />
 
             <StaggerContainer className="mt-6 space-y-4 sm:mt-8 sm:space-y-5" stagger={0.1}>

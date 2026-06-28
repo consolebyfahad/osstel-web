@@ -58,10 +58,10 @@ export function Hero() {
             </motion.div>
 
             <h1 className="text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl sm:text-5xl lg:text-6xl">
-              <WordReveal text={`${BRAND.name}: Hostel &`} delay={0.2} />
+              <WordReveal text={`${BRAND.name}:`} delay={0.2} />
               <br />
               <WordReveal
-                text="Hotel Management System"
+                text="Hostel Management System"
                 delay={0.35}
                 className="gradient-text-shimmer"
               />
@@ -73,7 +73,7 @@ export function Hero() {
               transition={{ delay: 0.55 }}
               className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-foreground/60 sm:mt-6 sm:text-lg lg:mx-0"
             >
-              The complete hostel and hotel management software for owners in{" "}
+              The complete hostel management software for owners in{" "}
               {BRAND.country}. Manage tenants, rooms, rent collection, payments,
               and complaints — all in one {BRAND.name} platform.
             </motion.p>

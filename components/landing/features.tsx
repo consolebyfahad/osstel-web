@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/animated-section";
 import { SectionHeader } from "@/components/ui/section-header";
 import { SpotlightCard } from "@/components/ui/spotlight-card";
+import { BRAND } from "@/lib/brand";
 const features = [
   {
     icon: Users,
@@ -70,11 +71,11 @@ export function Features() {
           eyebrow="Features"
           title={
             <>
-              Hostel & Hotel Management{" "}
+              Hostel Management{" "}
               <span className="gradient-text">Software Features</span>
             </>
           }
-          description="OSSTEL includes everything you need in a modern hostel management system and hotel management system — built for owners and property managers in Pakistan."
+          description={`${BRAND.name} includes everything you need in a modern hostel management system — built for hostel owners and property managers in Pakistan.`}
         />
 
         <StaggerContainer className="mt-14 hidden gap-6 sm:grid sm:grid-cols-2 lg:grid-cols-3">
