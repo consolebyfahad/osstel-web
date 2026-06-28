@@ -12,9 +12,9 @@ import { Marquee, MarqueeItem } from "@/components/ui/marquee";
 import { BRAND } from "@/lib/brand";
 
 const items = [
-  { icon: Building2, label: "500+ Hostels" },
+  { icon: Building2, label: "!00+ Hostels" },
   { icon: Users, label: "10K+ Tenants" },
-  { icon: CreditCard, label: "Rs. 5Cr+ Collected" },
+  { icon: CreditCard, label: "Rs. 500K+ Collected" },
   { icon: Smartphone, label: `${BRAND.name} Mobile App` },
   { icon: ShieldCheck, label: "Secure Payments" },
   { icon: Zap, label: "Setup in 2 Minutes" },
