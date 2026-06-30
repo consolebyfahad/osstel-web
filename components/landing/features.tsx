@@ -44,7 +44,7 @@ const features = [
     icon: Camera,
     title: "Payment Screenshot Verification",
     description:
-      "Tenants upload UPI/bank screenshots. Verify payments with a single tap.",
+      "Tenants upload JazzCash, Easypaisa, or bank screenshots. Verify payments with a single tap.",
     gradient: "from-accent/20 to-primary-end/10",
   },
   {

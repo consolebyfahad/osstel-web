@@ -117,6 +117,14 @@ export function Contact() {
                   <p className="mt-2 text-sm text-foreground/60">
                     We&apos;ll get back to you shortly.
                   </p>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    className="mt-6"
+                    onClick={() => setSubmitted(false)}
+                  >
+                    Send another message
+                  </Button>
                 </motion.div>
               ) : (
                 <>

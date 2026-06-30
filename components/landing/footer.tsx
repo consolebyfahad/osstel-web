@@ -22,9 +22,9 @@ const footerLinks = {
 };
 
 const socials = [
-  { icon: Share2, href: "#", label: "Social" },
-  { icon: Globe, href: "#", label: "Website" },
-  { icon: MessageCircle, href: "#", label: "Chat" },
+  { icon: MessageCircle, href: BRAND.whatsappUrl, label: "WhatsApp" },
+  { icon: Globe, href: BRAND.siteUrl, label: "Website" },
+  { icon: Share2, href: BRAND.whatsappUrl, label: "Share" },
   { icon: Mail, href: `mailto:${BRAND.email}`, label: "Email" },
 ];
 

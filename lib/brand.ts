@@ -7,6 +7,9 @@ export const BRAND = {
   phoneDisplay: "+92 319 1828420",
   whatsappUrl:
     "https://wa.me/923191828420?text=Hi%20Osstel%2C%20I%27d%20like%20to%20know%20more%20about%20your%20hostel%20management%20app.",
+  appAccessUrl:
+    "https://wa.me/923191828420?text=Hi%20Osstel%2C%20I%27d%20like%20to%20get%20access%20to%20the%20mobile%20app.",
+  siteUrl: "https://www.osstel.site",
   currency: "Rs.",
   country: "Pakistan",
   colors: {

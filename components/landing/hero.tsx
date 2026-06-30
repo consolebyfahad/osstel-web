@@ -15,10 +15,15 @@ import { BRAND } from "@/lib/brand";
 
 const dashboardShot = APP_SCREENSHOTS[0];
 
-const stats = [
-  { value: 500, suffix: "+", label: "Hostels" },
-  { value: 10, suffix: "K+", label: "Tenants" },
-  { value: 5, prefix: "Rs. ", suffix: "Cr+", label: "Rent Collected" },
+const stats: {
+  value: number;
+  suffix: string;
+  label: string;
+  prefix?: string;
+}[] = [
+  { value: 1, suffix: "", label: "Platform" },
+  { value: 100, suffix: "%", label: "Mobile Ready" },
+  { value: 24, suffix: "/7", label: "Rent Tracking" },
 ];
 
 export function Hero() {
@@ -86,14 +91,14 @@ export function Hero() {
             >
               <Button href="/#contact" className="w-full sm:w-auto">
                 <ArrowDownToLine size={18} />
-                Download App
+                Get Started
               </Button>
               <Button
                 variant="secondary"
-                href="/#contact"
+                href={BRAND.whatsappUrl}
                 className="w-full sm:w-auto"
               >
-                Request Demo
+                Chat on WhatsApp
               </Button>
             </motion.div>
 

@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowDownToLine } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { BRAND } from "@/lib/brand";
 
 export function MobileStickyCTA() {
   const { scrollY } = useScroll();
@@ -22,9 +23,9 @@ export function MobileStickyCTA() {
         >
           Request Demo
         </Button>
-        <Button href="#contact" className="flex-1 !py-3 !text-xs">
+        <Button href={BRAND.appAccessUrl} className="flex-1 !py-3 !text-xs">
           <ArrowDownToLine size={16} />
-          Download App
+          Get the App
         </Button>
       </div>
     </motion.div>

@@ -131,9 +131,13 @@ export function AppPreview() {
                 </div>
 
                 <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                  <StoreButton store="google" href="/#contact" />
-                  <StoreButton store="apple" href="/#contact" />
+                  <StoreButton store="google" href={BRAND.appAccessUrl} />
+                  <StoreButton store="apple" href={BRAND.appAccessUrl} />
                 </div>
+
+                <p className="mt-3 text-xs text-foreground/50">
+                  App access is provided on request. Contact us to get started.
+                </p>
 
                 <div className="mt-5">
                   <Button href="/#contact" variant="outline" className="w-full sm:w-auto">

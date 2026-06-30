@@ -164,7 +164,7 @@ export function buildSoftwareApplicationJsonLd() {
     alternateName: ["Osstel Hostel Management System", "Osstel App"],
     applicationCategory: "BusinessApplication",
     applicationSubCategory: "Hostel Management Software",
-    operatingSystem: "Android, iOS, Web",
+    operatingSystem: "Android, iOS",
     offers: {
       "@type": "Offer",
       price: "0",

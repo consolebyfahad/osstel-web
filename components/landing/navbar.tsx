@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { LiquidGlassToggle } from "@/components/ui/liquid-glass-toggle";
 import { Logo } from "@/components/ui/logo";
+import { BRAND } from "@/lib/brand";
 
 const navLinks = [
   { label: "Features", href: "/#features" },
@@ -69,7 +70,7 @@ export function Navbar() {
           <Button variant="outline" href="/#contact">
             Request Demo
           </Button>
-          <Button href="/#contact">Download App</Button>
+          <Button href={BRAND.appAccessUrl}>Get the App</Button>
         </div>
 
         <div className="flex items-center gap-2 md:hidden">
@@ -132,7 +133,7 @@ export function Navbar() {
                 <Button variant="outline" href="/#contact">
                   Request Demo
                 </Button>
-                <Button href="/#contact">Download App</Button>
+                <Button href={BRAND.appAccessUrl}>Get the App</Button>
               </motion.div>
             </motion.div>
           </motion.div>

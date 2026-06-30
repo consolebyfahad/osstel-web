@@ -1,5 +1,4 @@
-const API_URL =
-  process.env.NEXT_PUBLIC_API_URL;
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export interface SubmitContactPayload {
   name: string;
@@ -35,6 +34,12 @@ export class ContactApiError extends Error {
 }
 
 export async function submitContactInquiry(payload: SubmitContactPayload) {
+  if (!API_URL) {
+    throw new ContactApiError(
+      "Contact form is not configured. Please email us directly.",
+    );
+  }
+
   const response = await fetch(`${API_URL}/contact`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -48,10 +53,18 @@ export async function submitContactInquiry(payload: SubmitContactPayload) {
     throw new ContactApiError("Failed to reach the server. Please try again.");
   }
 
+  if (!response.ok && !json.message) {
+    throw new ContactApiError(
+      response.status >= 500
+        ? "Server error. Please try again shortly."
+        : "Failed to send message",
+    );
+  }
+
   if (!json.success) {
     throw new ContactApiError(
       json.message || "Failed to send message",
-      formatApiErrors(json.errors)
+      formatApiErrors(json.errors),
     );
   }
 
